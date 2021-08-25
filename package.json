@@ -34,7 +34,7 @@
     "express-rate-limit": "^5.2.6",
     "express-recaptcha": "^5.0.2",
     "express-session": "^1.16.1",
-    "fs": "0.0.1-security",
+    "fs": "^0.0.2",
     "image-size": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",

@@ -1,2 +1,2 @@
 welcome to the arras tx dashboard!!
-dont remo
+dont remix or else you are FUCKING dead!

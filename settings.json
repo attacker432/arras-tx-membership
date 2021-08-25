@@ -1,6 +1,6 @@
 [
   { 
-    "allowMemberRegistration": true,
+    "allowMemberRegistration": false,
     "allowMapSubmission": false,
     "allowTankSubmission": false,  
     "minRoleToViewMemberPasswordHash": "Developer",
