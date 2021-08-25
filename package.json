@@ -4,7 +4,7 @@
   "description": "arras tx dashboard",
   "main": "01-express-basics.js",
   "scripts": {
-    "start": "node"
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",

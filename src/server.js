@@ -37,7 +37,7 @@ app.use('/public', express.static(__dirname + '/client'));
 app.set('trust proxy', true);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname,'/client'));
-app.use(favicon(path.join(__dirname, 'client', 'favicon.ico')));
+//app.use(favicon(path.join('https://cdn.glitch.com/f49d280d-5749-4951-9a7f-ae9e6d0ab993%2Fc9c77c77-17e8-4084-a3d5-342d07765fe6.image.png?v=1629895483667')));
 
 app.use(middleware.cors);
 app.use(bodyParser.json());
