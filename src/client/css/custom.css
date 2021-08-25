@@ -1,0 +1,66 @@
+span.required {
+	color: red;
+	font-weight: bold;
+}
+
+form span.field-error{
+	color: palevioletred;  
+	margin: 0 0 20px;  
+	text-align: left;
+	display: block;
+	font-size: 13px;    
+}
+
+emoji-picker {
+  --num-columns: 6;
+  --emoji-size: 1.2rem;
+  --background: gray;
+}
+
+#chat-message-panel {
+  padding: 15px;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+div.emoji-gif-container {
+	text-align: center;	
+	width: 380px;
+	height: 300px;
+  overflow-y: scroll;
+}
+
+.emoji-gif {
+	margin: 2px;	
+	padding: 2px;
+	width: 64px;
+	display: inline-block;
+}
+
+.switcher {
+	margin-top: 7px;
+}
+
+
+/* http://jsfiddle.net/heera/4pdBa/1/ */
+.map-table{
+	display:table;
+	width:1000px;
+	height:25px;
+	table-layout:fixed;
+}
+
+.map-table-cell{
+	display:table-cell;	
+	cursor: pointer;
+	/* border:dotted rgba(120,150,120,0.7) 1px; */
+	border: solid rgba(120,150,220,0.3) 1px;
+}
+
+.disabled-cell {
+	cursor: default;
+}
+
+.selected-cell {	
+	background-color: rgba(125,125,125,0.5)!important;
+}

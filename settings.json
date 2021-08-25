@@ -1,0 +1,17 @@
+[
+  { 
+    "allowMemberRegistration": true,
+    "allowMapSubmission": true,
+    "allowTankSubmission": true,  
+    "minRoleToViewMemberPasswordHash": "Developer",
+    "minRoleToViewMemberCountry": "Developer",
+    "minRoleToEditMemberUsername": "Developer", 
+    "minRoleToEditMemberPasswordHash": "Developer",
+    "minRoleToEditMemberRole": "Developer", 
+    "minRoleToEditMemberStatus": "Developer",      
+    "minRoleToDeleteMember": "Developer",
+    "minRoleToManageRole": "Developer", 
+    "minRoleToDeleteRole": "Developer", 
+    "minRoleToEditSettings": "Developer"
+  }  
+]
