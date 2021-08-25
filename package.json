@@ -1,8 +1,11 @@
 {
   "name": "03-complete-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "arras tx dashboard",
   "main": "01-express-basics.js",
+  "scripts": {
+    "start": "node"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

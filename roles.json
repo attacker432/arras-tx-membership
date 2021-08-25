@@ -7,5 +7,6 @@
   { "name": "Honorary", "value": 200 },
   { "name": "Admin", "value": 500 },
   { "name": "Owner", "value": 800 },  
+  { "name": "Trusted owner", "value": 850 }, 
   { "name": "Developer", "value": 1000 }  
 ]
