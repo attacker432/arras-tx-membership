@@ -1,0 +1,566 @@
+<%- include('header'); %>
+
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-2">
+	<div class="layout-inner">
+
+		<!-- Layout sidenav -->
+		<div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark">
+
+			<!-- Brand demo (see assets/css/demo/demo.css) -->
+			<div class="app-brand demo">
+				<img src="/assets/img/logo-sm.png" alt="" class="app-brand-logo ui-w-40">
+
+				<a href="https://tankster.io" target="_blank" class="app-brand-text demo sidenav-text font-weight-normal ml-2">Tankster.io</a>
+				<a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
+					<i class="ion ion-md-menu align-middle"></i>
+				</a>
+			</div>
+			
+			<div class="sidenav-divider mt-0"></div>
+
+			<!-- Links -->
+			<ul class="sidenav-inner py-1">
+				<li class="sidenav-item">
+					<a href="/tank/list" class="sidenav-link">
+						<i class="sidenav-icon fas fa-snowplow"></i>
+						<div>Tanks</div>
+					</a>
+				</li>
+				
+				
+					<li class="sidenav-item">
+						<a href="/member/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-users"></i>
+							<div>Members</div>
+						</a>
+					</li>
+
+					<li class="sidenav-item">
+						<a href="/map/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-map"></i>
+							<div>Maps</div>
+						</a>
+					</li>
+
+					
+
+					<li class="sidenav-item">
+						<a href="/role/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-th-list"></i>
+							<div>Roles</div>
+						</a>
+					</li>
+
+					<li class="sidenav-item active">
+						<a href="/settings/view" class="sidenav-link">
+							<i class="sidenav-icon fas fa-cogs"></i>
+							<div>Settings</div>
+						</a>
+					</li>
+
+				
+
+				<li class="sidenav-item">
+					<a href="/game-audit" class="sidenav-link">
+						<i class="sidenav-icon fas fa-archive"></i>
+						<div>Audit: Game</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item">
+					<a href="/server-audit" class="sidenav-link">
+						<i class="sidenav-icon fas fa-archive"></i>
+						<div>Audit: Server</div>
+					</a>
+				</li>
+													
+				<li class="sidenav-divider mb-1"></li>
+
+				<li class="sidenav-item">
+					<a href="/profile" class="sidenav-link"><i class="sidenav-icon fas fa-user"></i>
+						<div>My Profile</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item">
+					<a href="/changepassword" class="sidenav-link"><i class="sidenav-icon fas fa-key"></i>
+						<div>Change Password</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- / Layout sidenav -->
+
+		<!-- Layout container -->
+		<div class="layout-container">
+			<!-- Layout navbar -->
+			<nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-white container-p-x" id="layout-navbar">
+				
+				<!-- Sidenav toggle (see assets/css/demo/demo.css) -->
+				<div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
+					<a class="nav-item nav-link px-0 mr-lg-4" href="javascript:void(0)">
+						<i class="ion ion-md-menu text-large align-middle"></i>
+					</a>
+				</div>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="navbar-collapse collapse" id="layout-navbar-collapse">
+					<!-- Divider -->
+					<hr class="d-lg-none w-100 my-2">            
+					<div class="navbar-nav align-items-lg-center ml-auto">                                        
+						<div class="demo-navbar-user nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+								<span class="d-inline-flex flex-lg-row align-items-center align-middle">									
+									<i class="sidenav-icon fas fa-user"></i>
+									<span class="px-1 mr-lg-2 ml-2 ml-lg-0"><%= user.username %></span>
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a href="/profile" class="dropdown-item"><i class="fas fa-user text-light"></i> &nbsp; My Profile</a>
+								<a href="/changepassword" class="dropdown-item"><i class="fas fa-key text-light"></i> &nbsp; Change Password</a>
+								<div class="dropdown-divider"></div>
+								<a href="/logout" class="dropdown-item"><i class="ion ion-ios-log-out text-danger"></i> &nbsp; Log Out</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</nav>
+			<!-- / Layout navbar -->
+
+
+			<!-- Layout content -->
+			<div class="layout-content">
+					<!-- Content -->
+          <div class="container-fluid flex-grow-1 container-p-y">
+						<div id="messagePanel" class="alert alert-danger alert-dismissible fade show" 
+								role="alert" style="visibility: hidden;">
+							<button type="button" class="close" data-dismiss="alert">×</button>
+						</div>
+						
+            <div class="card mb-4">
+              <h6 class="card-header">
+                Settings: Edit - Main
+              </h6>
+              <div class="card-body">   
+								<!-- <h4 class="card-title text-warning">Minimum Role Required To:</h4> -->
+
+								<form action="/settings/edit" method="POST" id="editForm">								
+									<!-- <input type="hidden" id="_id" name="_id" value="<%= settings._id %>" /> -->	
+																			
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Allow Member Registration:
+										</label>
+										<div class="col-sm-9">
+											<label class="switcher">
+												<input type="checkbox" id="allowMemberRegistration" class="switcher-input" <%= settings.allowMemberRegistration ? "checked" : "" %> />
+												<span class="switcher-indicator">
+													<span class="switcher-yes"></span>
+													<span class="switcher-no"></span>
+												</span>
+												<span class="switcher-label"></span>
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Allow Map Submission:
+										</label>
+										<div class="col-sm-9">
+											<label class="switcher">
+												<input type="checkbox" id="allowMapSubmission" class="switcher-input" <%= settings.allowMapSubmission ? "checked" : "" %> />
+												<span class="switcher-indicator">
+													<span class="switcher-yes"></span>
+													<span class="switcher-no"></span>
+												</span>
+												<span class="switcher-label"></span>
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Allow Tank Submission:
+										</label>
+										<div class="col-sm-9">
+											<label class="switcher">
+												<input type="checkbox" id="allowTankSubmission" class="switcher-input" <%= settings.allowTankSubmission ? "checked" : "" %> />
+												<span class="switcher-indicator">
+													<span class="switcher-yes"></span>
+													<span class="switcher-no"></span>
+												</span>
+												<span class="switcher-label"></span>
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">
+											<label class="badge badge-default">Min Role Required To</label>	View Member Password Hash:
+										</label>
+										<div class="col-sm-9">
+											<select id="minRoleToViewMemberPasswordHash" name="minRoleToViewMemberPasswordHash" class="custom-select">
+												<option>-- Select --</option>
+												<% for(const role of roles) { %>														
+													<option value="<%= role.name %>" <%if (settings.minRoleToViewMemberPasswordHash == role.name){%> selected <% } %>>
+														<%= role.name %>
+													</option>
+												<% } %>
+											</select>
+											<span data-validation-for="minRoleToViewMemberPasswordHash" class="field-error"></span>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">
+											<label class="badge badge-default">Min Role Required To</label>	View Member Country:
+										</label>
+										<div class="col-sm-9">
+											<select id="minRoleToViewMemberCountry" name="minRoleToViewMemberCountry" class="custom-select">
+												<option>-- Select --</option>
+												<% for(const role of roles) { %>														
+													<option value="<%= role.name %>" <%if (settings.minRoleToViewMemberCountry == role.name){%> selected <% } %>>
+														<%= role.name %>
+													</option>
+												<% } %>
+											</select>
+											<span data-validation-for="minRoleToViewMemberCountry" class="field-error"></span>
+										</div>
+									</div>
+										  
+								
+										
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">
+											<label class="badge badge-default">Min Role Required To</label>	Edit Member Role:
+										</label>
+										<div class="col-sm-9">
+											<select id="minRoleToEditMemberRole" name="minRoleToEditMemberRole" class="custom-select">
+												<option>-- Select --</option>
+												<% for(const role of roles) { %>														
+													<option value="<%= role.name %>" <%if (settings.minRoleToEditMemberRole == role.name){%> selected <% } %>>
+														<%= role.name %>
+													</option>
+												<% } %>
+											</select>
+											<span data-validation-for="minRoleToEditMemberRole" class="field-error"></span>                      
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">
+											<label class="badge badge-default">Min Role Required To</label>	Edit Member Status:
+										</label>
+										<div class="col-sm-9">
+											<select id="minRoleToEditMemberStatus" name="minRoleToEditMemberStatus" class="custom-select">
+												<option>-- Select --</option>
+												<% for(const role of roles) { %>														
+													<option value="<%= role.name %>" <%if (settings.minRoleToEditMemberStatus == role.name){%> selected <% } %>>
+														<%= role.name %>
+													</option>
+												<% } %>
+											</select>
+											<span data-validation-for="minRoleToEditMemberStatus" class="field-error"></span>                      
+										</div>
+									</div>
+
+									
+																		
+
+									<% if (user.role === 'Developer') { %>	
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Delete Member:
+											</label>
+											<div class="col-sm-9">
+												<select id="minRoleToDeleteMember" name="minRoleToDeleteMember" class="custom-select">
+													<option>-- Select --</option>
+													<% for(const role of roles) { %>														
+														<option value="<%= role.name %>" <%if (settings.minRoleToDeleteMember == role.name){%> selected <% } %>>
+															<%= role.name %>
+														</option>
+													<% } %>
+												</select>
+												<span data-validation-for="minRoleToDeleteMember" class="field-error"></span>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Edit Member Username:
+											</label>
+											<div class="col-sm-9">
+												<select id="minRoleToEditMemberUsername" name="minRoleToEditMemberUsername" class="custom-select">
+													<option>-- Select --</option>
+													<% for(const role of roles) { %>														
+														<option value="<%= role.name %>" <%if (settings.minRoleToEditMemberUsername == role.name){%> selected <% } %>>
+															<%= role.name %>
+														</option>
+													<% } %>
+												</select>
+												<span data-validation-for="minRoleToEditMemberUsername" class="field-error"></span>                      
+											</div>
+										</div>
+	
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Edit Member Password Hash:
+											</label>
+											<div class="col-sm-9">
+												<select id="minRoleToEditMemberPasswordHash" name="minRoleToEditMemberPasswordHash" class="custom-select">
+													<option>-- Select --</option>
+													<% for(const role of roles) { %>														
+														<option value="<%= role.name %>" <%if (settings.minRoleToEditMemberPasswordHash == role.name){%> selected <% } %>>
+															<%= role.name %>
+														</option>
+													<% } %>
+												</select>
+												<span data-validation-for="minRoleToEditMemberPasswordHash" class="field-error"></span>                      
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Manage Role:
+											</label>
+											<div class="col-sm-9">
+												<select id="minRoleToManageRole" name="minRoleToManageRole" class="custom-select">
+													<option>-- Select --</option>
+													<% for(const role of roles) { %>														
+														<option value="<%= role.name %>" <%if (settings.minRoleToManageRole == role.name){%> selected <% } %>>
+															<%= role.name %>
+														</option>
+													<% } %>
+												</select>
+												<span data-validation-for="minRoleToManageRole" class="field-error"></span>
+											</div>
+										</div>
+	
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Delete Role:
+											</label>
+											<div class="col-sm-9">
+												<select id="minRoleToDeleteRole" name="minRoleToDeleteRole" class="custom-select">
+													<option>-- Select --</option>
+													<% for(const role of roles) { %>														
+														<option value="<%= role.name %>" <%if (settings.minRoleToDeleteRole == role.name){%> selected <% } %>>
+															<%= role.name %>
+														</option>
+													<% } %>
+												</select>
+												<span data-validation-for="minRoleToDeleteRole" class="field-error"></span>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Edit Settings:
+											</label>
+											<div class="col-sm-9">
+												<select id="minRoleToEditSettings" name="minRoleToEditSettings" class="custom-select">
+													<option>-- Select --</option>
+													<% for(const role of roles) { %>														
+														<option value="<%= role.name %>" <%if (settings.minRoleToEditSettings == role.name){%> selected <% } %>>
+															<%= role.name %>
+														</option>
+													<% } %>
+												</select>
+												<span data-validation-for="minRoleToEditSettings" class="field-error"></span>                      
+											</div>
+										</div>
+									<% } else { %>
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Delete Member:
+											</label>
+											<div class="col-sm-9">
+												<input type="text" id="minRoleToDeleteMember" value="<%= settings.minRoleToDeleteMember %>" class="form-control" readonly />
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Edit Member Username:
+											</label>
+											<div class="col-sm-9">
+												<input type="text" id="minRoleToEditMemberUsername" value="<%= settings.minRoleToEditMemberUsername %>" class="form-control" readonly />
+											</div>
+										</div>
+	
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Edit Member Password Hash:
+											</label>
+											<div class="col-sm-9">
+												<input type="text" id="minRoleToEditMemberPasswordHash" value="<%= settings.minRoleToEditMemberPasswordHash %>" class="form-control" readonly />
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Manage Role:
+											</label>
+											<div class="col-sm-9">
+												<input type="text" id="minRoleToManageRole" value="<%= settings.minRoleToManageRole %>" class="form-control" readonly />
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Delete Role:
+											</label>
+											<div class="col-sm-9">
+												<input type="text" id="minRoleToDeleteRole" value="<%= settings.minRoleToDeleteRole %>" class="form-control" readonly />
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-form-label col-sm-3 text-sm-right">
+												<label class="badge badge-default">Min Role Required To</label>	Edit Settings:
+											</label>
+											<div class="col-sm-9">
+												<input type="text" id="minRoleToEditSettings" value="<%= settings.minRoleToEditSettings %>" class="form-control" readonly />
+											</div>
+										</div>
+										
+									<% } %>
+
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right"></label>
+                    <div class="col-sm-9">
+											<input type="submit" name="submit" value="Save" class="btn btn-primary" />
+												&nbsp;&nbsp;
+												<a class="btn btn-outline-secondary" href="/settings/view">
+													Cancel
+												</a>																						
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>											
+          </div>
+				
+
+          <!-- / Content -->
+
+				<!-- Layout footer -->
+				<nav class="layout-footer footer bg-footer-theme">
+					<div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+						<div class="pt-3">
+							<span class="footer-text font-weight-bolder">Tankster.io</span> ©
+						</div>              
+					</div>
+				</nav>
+				<!-- / Layout footer -->
+			</div>
+			<!-- Layout content -->
+		</div>
+		<!-- / Layout container -->
+	</div>
+
+	<!-- Overlay -->
+	<div class="layout-overlay layout-sidenav-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+<script>	
+	$(document).ready(function() {
+		$('#editForm').submit(function(event){
+			event.preventDefault();
+			$('input[type="submit"]').prop('disabled', true);
+
+			const url = this.getAttribute('action');
+			const data = {				
+				minRoleToViewMemberPasswordHash: getValueById('minRoleToViewMemberPasswordHash'),
+				minRoleToViewMemberCountry: getValueById('minRoleToViewMemberCountry'),
+				minRoleToEditMemberUsername: getValueById('minRoleToEditMemberUsername'),
+				minRoleToEditMemberPasswordHash: getValueById('minRoleToEditMemberPasswordHash'),
+				minRoleToEditMemberRole: getValueById('minRoleToEditMemberRole'),
+				minRoleToEditMemberStatus: getValueById('minRoleToEditMemberStatus'),
+				minRoleToDeleteMember: getValueById('minRoleToDeleteMember'),
+
+				minRoleToManageRole: getValueById('minRoleToManageRole'),
+				minRoleToDeleteRole: getValueById('minRoleToDeleteRole'),
+				minRoleToEditSettings: getValueById('minRoleToEditSettings'),
+
+				allowMemberRegistration: document.querySelector('#allowMemberRegistration').checked,
+				allowMapSubmission: document.querySelector('#allowMapSubmission').checked,
+				allowTankSubmission: document.querySelector('#allowTankSubmission').checked,
+			};
+
+			$.ajax({
+				type: 'POST',
+				data: JSON.stringify(data),
+				contentType: 'application/json',
+				url: url,								
+			})			
+			.done(
+				function(data, textStatus, jqXHR){
+					if (data.success){
+						window.location.href = data.redirectUrl;
+					}
+					else {
+						showMessagePanel(data.message);
+					}					
+				}
+			)
+			.fail(
+				function(jqXHR, textStatus, errorThrown){
+					if (jqXHR.responseJSON){
+						toggleValidationErrors(jqXHR.responseJSON);
+						const msg = jqXHR.responseJSON ? jqXHR.responseJSON.message : errorThrown;
+						showMessagePanel(msg);
+					}
+					else {
+						if (textStatus === 'error'){
+							showMessagePanel('Unknown error.');
+						}
+					}
+				})				
+				.always(
+					function(){
+						$('input[type="submit"]').prop('disabled', false);
+					}
+				);
+		});
+	});
+			
+	function showMessagePanel(message){
+		if (message){
+			const element = document.getElementById('messagePanel');
+			if (element){
+				element.style.visibility = 'visible';
+				element.textContent = message;
+			}
+		}
+	}
+
+	function getValueById(elementId){
+		return document.getElementById(elementId).value;
+	}
+
+	function toggleValidationErrors(responseJSON){
+		if (responseJSON){
+			const errorDetails = responseJSON.errorDetails || {};
+			const validationErrorFields = document.querySelectorAll('span[data-validation-for]');
+
+			Array.from(validationErrorFields).forEach((element, index) => {
+				if (errorDetails[element.dataset.validationFor]){
+					element.textContent = errorDetails[element.dataset.validationFor].message;
+				} else {
+					element.textContent = '';
+				}
+			});
+		}
+	}
+</script>
+
+
+<%- include('footer'); %>
