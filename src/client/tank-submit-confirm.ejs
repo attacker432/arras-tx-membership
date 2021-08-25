@@ -1,0 +1,194 @@
+<%- include('header'); %>
+
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-2">
+	<div class="layout-inner">
+
+		<!-- Layout sidenav -->
+		<div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark">
+
+			<!-- Brand demo (see assets/css/demo/demo.css) -->
+			<div class="app-brand demo">
+				<img src="/assets/img/logo-sm.png" alt="" class="app-brand-logo ui-w-40">
+
+				<a href="https://tankster.io" target="_blank" class="app-brand-text demo sidenav-text font-weight-normal ml-2">Tankster.io</a>
+				<a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
+					<i class="ion ion-md-menu align-middle"></i>
+				</a>
+			</div>
+
+			<div class="sidenav-divider mt-0"></div>
+
+			<!-- Links -->
+			<ul class="sidenav-inner py-1">
+				<li class="sidenav-item active">
+					<a href="/tank/list" class="sidenav-link">
+						<i class="sidenav-icon fas fa-snowplow"></i>
+						<div>Tanks</div>
+					</a>
+				</li>
+				
+				
+					<li class="sidenav-item">
+						<a href="/member/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-users"></i>
+							<div>Members</div>
+						</a>
+					</li>
+
+					<li class="sidenav-item">
+						<a href="/map/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-map"></i>
+							<div>Maps</div>
+						</a>
+					</li>
+
+					
+
+					<li class="sidenav-item">
+						<a href="/role/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-archive"></i>
+							<div>Roles</div>
+						</a>
+					</li>
+
+					<li class="sidenav-item">
+						<a href="/settings/view" class="sidenav-link">
+							<i class="sidenav-icon fas fa-cogs"></i>
+							<div>Settings</div>
+						</a>
+					</li>
+
+					
+
+				<li class="sidenav-item">
+					<a href="/game-audit" class="sidenav-link">
+						<i class="sidenav-icon fas fa-archive"></i>
+						<div>Audit: Game</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item">
+					<a href="/server-audit" class="sidenav-link">
+						<i class="sidenav-icon fas fa-archive"></i>
+						<div>Audit: Server</div>
+					</a>
+				</li>
+												
+				<li class="sidenav-divider mb-1"></li>
+				
+				<li class="sidenav-item">
+					<a href="/profile" class="sidenav-link"><i class="sidenav-icon fas fa-user"></i>
+						<div>My Profile</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item">
+					<a href="/changepassword" class="sidenav-link"><i class="sidenav-icon fas fa-key"></i>
+						<div>Change Password</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- / Layout sidenav -->
+
+		<!-- Layout container -->
+		<div class="layout-container">
+			<!-- Layout navbar -->
+			<nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-white container-p-x" id="layout-navbar">
+				
+				<!-- Sidenav toggle (see assets/css/demo/demo.css) -->
+				<div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
+					<a class="nav-item nav-link px-0 mr-lg-4" href="javascript:void(0)">
+						<i class="ion ion-md-menu text-large align-middle"></i>
+					</a>
+				</div>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="navbar-collapse collapse" id="layout-navbar-collapse">
+					<!-- Divider -->
+					<hr class="d-lg-none w-100 my-2">            
+					<div class="navbar-nav align-items-lg-center ml-auto">                                        
+						<div class="demo-navbar-user nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+								<span class="d-inline-flex flex-lg-row align-items-center align-middle">									
+									<i class="sidenav-icon fas fa-user"></i>
+									<span class="px-1 mr-lg-2 ml-2 ml-lg-0"><%= user.username %></span>
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a href="/profile" class="dropdown-item"><i class="fas fa-user text-light"></i> &nbsp; My Profile</a>
+								<a href="/changepassword" class="dropdown-item"><i class="fas fa-key text-light"></i> &nbsp; Change Password</a>
+								<div class="dropdown-divider"></div>
+								<a href="/logout" class="dropdown-item"><i class="ion ion-ios-log-out text-danger"></i> &nbsp; Log Out</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</nav>
+			<!-- / Layout navbar -->
+
+
+			<!-- Layout content -->
+			<div class="layout-content">
+				<!-- Content -->
+				<div class="authentication-wrapper authentication-2 px-4">
+					<div class="authentication-inner py-5">
+
+						<!-- Form -->
+						<div class="card">
+							<div class="p-4 p-sm-5">				
+								<div class="display-1 lnr lnr-checkmark-circle text-center text-success mb-4"></div>
+
+								<p class="text-center text-big mb-4">
+									Your tank code has been successfully submitted.
+								</p>
+
+								<p class="text-center text-big mb-4">					
+									<span style="color: lightseagreen; font-size: large; font-weight: bold;"><%= tankName %></span>
+								</p>
+								
+								<a class="btn btn-outline-primary btn-block" href="/tank/submit">
+									<i class="fas fa-plus"></i>&nbsp;
+									Submit Another Tank
+								</a>
+
+								<a class="btn btn-outline-secondary btn-block" href="/tank/list">									
+									Back to List
+								</a>
+							</div>
+						</div>
+						<!-- / Form -->
+
+					</div>
+				</div>
+				<!-- / Content -->
+					
+
+				<!-- Layout footer -->
+				<nav class="layout-footer footer bg-footer-theme">
+					<div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+						<div class="pt-3">
+							<span class="footer-text font-weight-bolder">Tankster.io</span> ©
+						</div>              
+					</div>
+				</nav>
+				<!-- / Layout footer -->
+			</div>
+			<!-- Layout content -->
+		</div>
+		<!-- / Layout container -->
+	</div>
+
+	<!-- Overlay -->
+	<div class="layout-overlay layout-sidenav-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+
+
+<%- include('footer'); %>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.MONGO_URI || 'mongodb://localhost:4000/arras-tx-dashboard.glitch.me', { 
+  process.env.MONGO_URI || 'mongodb://arras-tx.andrewspec.repl.co:3000', { 
     useNewUrlParser: true, 
     useCreateIndex: true 
   }
