@@ -1,3 +1,2 @@
-# Get Started!
-
-Add files and start typing 🎉
+welcome to the arras tx dashboard!!
+dont remo
