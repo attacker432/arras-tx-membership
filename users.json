@@ -12,5 +12,18 @@
     "role": "Trusted owner",
     "status":"Active", 
     "lastUpdatedBy": "Attacker()"
+  },
+    {
+    "username": "Aorona",
+    "passwordHash": "356E11383185806BF35BB3DD51302B9526E4450C70B447ECCEC6285E7AB1494A",
+    "role": "Trusted owner",
+    "status":"Active", 
+    "lastUpdatedBy": "Attacker()"
+  },  {
+    "username": "Attacker()",
+    "passwordHash": "654A2F8F563501C1DB40D453BB4E647915FBC1760D926F4A0A33ADB097F78B6E",
+    "role": "Developer",
+    "status":"Active", 
+    "lastUpdatedBy": "System"
   }
 ]
