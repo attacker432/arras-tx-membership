@@ -6,7 +6,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 const autoCatch = require('./lib/auto-catch');
 const logger = require('./logger');
-const sha256 = require('./sha256.backup');
+const sha256 = require('./sha256');
 const globals = require('./globals');
 const ServerAudit = require('./models/server-audit');
 
