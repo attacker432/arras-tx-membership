@@ -13,8 +13,8 @@ module.exports = {
 
     DefaultRoleColor: '#ffffff',
     DefaultRoleName: 'Member',
-    DeveloperRole: "Head developer",
-    DeveloperRoleValue: 1500,
+    DeveloperRole: "Developer",
+    DeveloperRoleValue: 1000,
 
     DefaultMemberStatus: "Inactive",
     ValidMemberStatuses: [
@@ -60,13 +60,13 @@ module.exports = {
         minRoleToViewMemberPasswordHash: 'Developer',
         minRoleToViewMemberCountry: 'Moderator',
         minRoleToEditMemberUsername: 'Owner', 
-        minRoleToEditMemberPasswordHash: 'Head developer',
+        minRoleToEditMemberPasswordHash: 'Developer',
         minRoleToEditMemberRole: 'Admin', 
         minRoleToEditMemberStatus: 'Admin',      
         minRoleToDeleteMember: 'Owner',
         minRoleToManageRole: 'Admin', 
         minRoleToDeleteRole: 'Owner', 
-        minRoleToEditSettings: 'Head developer',
+        minRoleToEditSettings: 'Developer',
     },
 
     Settings: {},

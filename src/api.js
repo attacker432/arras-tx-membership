@@ -142,7 +142,7 @@ async function getLoginPage (req, res, next){
 
 async function getRegistrationPage (req, res, next){  
   try {
-    if (globals.Settings.allowMemberRegistration === false){
+    if (!globals.Settings.allowMemberRegistration){
       res.render('registration-disabled', {
         title: 'Registration Disabled'      
       });
@@ -2249,7 +2249,7 @@ function isInRange(value, min, max){
 }
 
 function isDeveloper (roleName){
-  return (roleName === 'Head developer');
+  return (roleName === 'Developer');
 }
 
 function getRoleValueFromName (roleName){
@@ -3500,7 +3500,7 @@ function trimIfNotEmpty(input){
 
 async function registerMember(req, res, next) {  
   try {
-    if (globals.Settings.allowMemberRegistration === false) {
+    if (!globals.Settings.allowMemberRegistration) {
       return res.status(403).json({
         success: false,
         message: 'Member registration is disabled at the moment.'
@@ -3744,20 +3744,20 @@ async function authenticateGamer(req, res, next) {
     // Try to retrieve the user based on username.
     const user = await User.get(req.body.username);
 
-    if (user === false){      
+    if (!user){      
       return res.status(401).json({
-        success: false,
-        message: 'Authentication failed!!'
+        success: true,
+        message: 'Authentication failed.'
       });      
     }
 
     // Compare the password hashes.    
     const passwordMatched = req.body.passwordHash.toUpperCase() === user.passwordHash.toUpperCase();
 
-    if (passwordMatched === false){      
+    if (!passwordMatched){      
       return res.status(401).json({
-        success: false,
-        message: 'Authentication failed!'
+        success: true,
+        message: 'Authentication failed.'
       });      
     }
 

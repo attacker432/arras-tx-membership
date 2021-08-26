@@ -1,6 +1,6 @@
 {
-  "name": "03-complete-server",
-  "version": "1.0.0",
+  "name": "arras tx dashboard",
+  "version": "1.7.4",
   "description": "arras tx dashboard",
   "main": "01-express-basics.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
     "moment": "^2.29.1",
-    "mongoose": "^5.5.4",
+    "mongoose": "^6.0.0",
     "nodemailer": "^6.4.6",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
@@ -50,7 +50,8 @@
     "socket.io": "^4.0.1",
     "validator": "^10.11.0",
     "ws": "^7.4.5",
+     "mongodb": "^4.1.0",
     "sha256": "^0.2.0",
-    "mongodb": "^4.1.0"
+    "text-encoder": "^0.0.4"
   }
-} 
+}
