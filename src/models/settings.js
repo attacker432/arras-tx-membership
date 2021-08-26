@@ -9,19 +9,19 @@ const Settings = db.model('Settings', {
   allowTankSubmission : { type: Boolean, default: true },
   
   minRoleToViewMemberPasswordHash: { type: String, default: 'Developer' },
-  minRoleToViewMemberCountry: { type: String, default: 'Developer' },   
+  minRoleToViewMemberCountry: { type: String, default: 'Moderator' },   
   
-  minRoleToEditMemberUsername: { type: String, default: 'Developer' }, 
+  minRoleToEditMemberUsername: { type: String, default: 'Owner' }, 
   minRoleToEditMemberPasswordHash: { type: String, default: 'Developer' },
-  minRoleToEditMemberRole: { type: String, default: 'Developer' }, 
-  minRoleToEditMemberStatus: { type: String, default: 'Developer' },      
-  minRoleToDeleteMember: { type: String, default: 'Developer' },
+  minRoleToEditMemberRole: { type: String, default: 'Admin' }, 
+  minRoleToEditMemberStatus: { type: String, default: 'Admin' },      
+  minRoleToDeleteMember: { type: String, default: 'Owner' },
 
   // ===========================================================================
-  // Allow this to be edited by "Developer" only.
+  // Allow this to be edited by "[role name]" only.
   // ===========================================================================
-  minRoleToManageRole: { type: String, default: 'Developer' }, 
-  minRoleToDeleteRole: { type: String, default: 'Developer' }, 
+  minRoleToManageRole: { type: String, default: 'Admin' }, 
+  minRoleToDeleteRole: { type: String, default: 'Owner' }, 
 
   minRoleToEditSettings: { type: String, default: 'Developer' },
   // ===========================================================================
