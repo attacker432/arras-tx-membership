@@ -1,4 +1,4 @@
-/*   
+
 const crypto = require('crypto');
 
 async function hash (password) {
@@ -8,7 +8,7 @@ async function hash (password) {
 module.exports = {
     hash  
 }
-*/
+/*
 let sha256 = require('sha256');
 async function hash (password) {
   return sha256(password);
@@ -16,3 +16,4 @@ async function hash (password) {
 module.exports = {
   hash
 }
+*/
