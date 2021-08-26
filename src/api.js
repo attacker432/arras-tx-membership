@@ -3744,10 +3744,10 @@ async function authenticateGamer(req, res, next) {
     // Try to retrieve the user based on username.
     const user = await User.get(req.body.username);
 
-    if (!user){      
+    if (user === false){      
       return res.status(401).json({
         success: false,
-        message: 'Authentication failed.'
+        message: 'Authentication failed!!'
       });      
     }
 
@@ -3757,7 +3757,7 @@ async function authenticateGamer(req, res, next) {
     if (passwordMatched === false){      
       return res.status(401).json({
         success: false,
-        message: 'Authentication failed.'
+        message: 'Authentication failed!'
       });      
     }
 
