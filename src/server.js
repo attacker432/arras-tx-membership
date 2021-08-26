@@ -145,7 +145,7 @@ app.use(middleware.notFound);
 
 let httpServer = null;
 
-if (config.localhost){  
+if (config.localhost){
   httpServer = http.createServer(app);
   
   httpServer.listen(port, () => {
@@ -159,6 +159,7 @@ if (config.localhost){
 }
 else {
   // Certificate
+  /*
   const privateKey = fs.readFileSync(config.sslPrivateKeyFilePath, 'utf8');
   const certificate = fs.readFileSync(config.sslCertificateFilePath, 'utf8');  
   const fullChain = fs.readFileSync(config.sslFullChainFilePath, 'utf8');
@@ -168,8 +169,9 @@ else {
       cert: certificate,
       ca: fullChain
   };
+  */
   
-  httpServer = https.createServer(credentials, app);
+  httpServer = https.createServer(app);
 
   httpServer.listen(port, () => {
     console.log(`Server listening on port ${port}`);

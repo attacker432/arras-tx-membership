@@ -1,0 +1,482 @@
+<%- include('headers.ejs'); %>
+	<!-- Layout wrapper -->
+  <div class="layout-wrapper layout-2">
+    <div class="layout-inner">
+
+      <!-- Layout sidenav -->
+      <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark">
+
+        <!-- Brand demo (see assets/css/demo/demo.css) -->
+        <div class="app-brand demo">
+					<img src="/assets/img/logo-sm.png" alt="" class="app-brand-logo ui-w-40">
+	
+					<a href="https://arras-tx.andrewspec.repl.co" target="_blank" class="app-brand-text demo sidenav-text font-weight-normal ml-2">arras tx</a>
+					<a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
+						<i class="ion ion-md-menu align-middle"></i>
+					</a>
+				</div>
+
+        <div class="sidenav-divider mt-0"></div>
+
+        <!-- Links -->
+        <ul class="sidenav-inner py-1">
+					<li class="sidenav-item">
+						<a href="/tank/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-snowplow"></i>
+							<div>Tanks</div>
+						</a>
+					</li>
+					
+					
+						<li class="sidenav-item">
+							<a href="/member/list" class="sidenav-link">
+								<i class="sidenav-icon fas fa-users"></i>
+								<div>Members</div>
+							</a>
+						</li>
+
+						<li class="sidenav-item active">
+							<a href="/map/list" class="sidenav-link">
+								<i class="sidenav-icon fas fa-map"></i>
+								<div>Maps</div>
+							</a>
+						</li>
+	
+						
+
+						<li class="sidenav-item">
+							<a href="/role/list" class="sidenav-link">
+								<i class="sidenav-icon fas fa-th-list"></i>
+								<div>Roles</div>
+							</a>
+						</li>
+
+						<li class="sidenav-item">
+							<a href="/settings/view" class="sidenav-link">
+								<i class="sidenav-icon fas fa-cogs"></i>
+								<div>Settings</div>
+							</a>
+						</li>
+
+					
+
+					<li class="sidenav-item">
+						<a href="/game-audit" class="sidenav-link">
+							<i class="sidenav-icon fas fa-archive"></i>
+							<div>Audit: Game</div>
+						</a>
+					</li>
+
+					<li class="sidenav-item">
+						<a href="/server-audit" class="sidenav-link">
+							<i class="sidenav-icon fas fa-archive"></i>
+							<div>Audit: Server</div>
+						</a>
+					</li>
+                       
+					<li class="sidenav-divider mb-1"></li>
+					
+          <li class="sidenav-item">
+            <a href="/profile" class="sidenav-link"><i class="sidenav-icon fas fa-user"></i>
+              <div>My Profile</div>
+            </a>
+          </li>
+
+					<li class="sidenav-item">
+            <a href="/changepassword" class="sidenav-link"><i class="sidenav-icon fas fa-key"></i>
+              <div>Change Password</div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- / Layout sidenav -->
+
+      <!-- Layout container -->
+      <div class="layout-container">
+        <!-- Layout navbar -->
+        <nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-white container-p-x" id="layout-navbar">
+
+          <!-- Brand demo (see assets/css/demo/demo.css) -->
+          <!-- <a href="index.html" class="navbar-brand app-brand demo d-lg-none py-0 mr-4">
+            <span class="app-brand-logo demo bg-primary">
+              <svg viewBox="0 0 148 80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient id="a" x1="46.49" x2="62.46" y1="53.39" y2="48.2" gradientUnits="userSpaceOnUse"><stop stop-opacity=".25" offset="0"></stop><stop stop-opacity=".1" offset=".3"></stop><stop stop-opacity="0" offset=".9"></stop></linearGradient><linearGradient id="e" x1="76.9" x2="92.64" y1="26.38" y2="31.49" xlink:href="#a"></linearGradient><linearGradient id="d" x1="107.12" x2="122.74" y1="53.41" y2="48.33" xlink:href="#a"></linearGradient></defs><path style="fill: #fff;" transform="translate(-.1)" d="M121.36,0,104.42,45.08,88.71,3.28A5.09,5.09,0,0,0,83.93,0H64.27A5.09,5.09,0,0,0,59.5,3.28L43.79,45.08,26.85,0H.1L29.43,76.74A5.09,5.09,0,0,0,34.19,80H53.39a5.09,5.09,0,0,0,4.77-3.26L74.1,35l16,41.74A5.09,5.09,0,0,0,94.82,80h18.95a5.09,5.09,0,0,0,4.76-3.24L148.1,0Z"></path><path transform="translate(-.1)" d="M52.19,22.73l-8.4,22.35L56.51,78.94a5,5,0,0,0,1.64-2.19l7.34-19.2Z" fill="url(#a)"></path><path transform="translate(-.1)" d="M95.73,22l-7-18.69a5,5,0,0,0-1.64-2.21L74.1,35l8.33,21.79Z" fill="url(#e)"></path><path transform="translate(-.1)" d="M112.73,23l-8.31,22.12,12.66,33.7a5,5,0,0,0,1.45-2l7.3-18.93Z" fill="url(#d)"></path></svg>
+            </span>
+            <span class="app-brand-text demo font-weight-normal ml-2">Appwork</span>
+          </a> -->
+
+          <!-- Sidenav toggle (see assets/css/demo/demo.css) -->
+          <div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
+            <a class="nav-item nav-link px-0 mr-lg-4" href="javascript:void(0)">
+              <i class="ion ion-md-menu text-large align-middle"></i>
+            </a>
+          </div>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="navbar-collapse collapse" id="layout-navbar-collapse">
+            <!-- Divider -->
+            <hr class="d-lg-none w-100 my-2">            
+            <div class="navbar-nav align-items-lg-center ml-auto">                                        
+              <div class="demo-navbar-user nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                  <span class="d-inline-flex flex-lg-row align-items-center align-middle">                    
+                    <i class="sidenav-icon fas fa-user"></i>
+                    <span class="px-1 mr-lg-2 ml-2 ml-lg-0"><%= user.username %></span>
+                  </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a href="/profile" class="dropdown-item"><i class="fas fa-user text-light"></i> &nbsp; My Profile</a>
+									<a href="/changepassword" class="dropdown-item"><i class="fas fa-key text-light"></i> &nbsp; Change Password</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="/logout" class="dropdown-item"><i class="ion ion-ios-log-out text-danger"></i> &nbsp; Log Out</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </nav>
+        <!-- / Layout navbar -->
+
+
+
+        <!-- Layout content -->
+        <div class="layout-content">
+          <!-- Content -->
+          <div class="container-fluid flex-grow-1 container-p-y"> 
+						<div id="messagePanel" class="alert alert-danger alert-dismissible fade show" style="visibility: hidden;">
+							<button type="button" class="close" data-dismiss="alert">×</button>
+						</div>
+
+            <div class="card mb-4">
+              <h6 class="card-header">
+                Map Details: Edit
+              </h6>
+              <div class="card-body">					
+								<form id="submitForm" action="/map/edit" method="POST">
+									<input type="hidden" id="_id" name="_id" value="<%= maze.id %>" />
+
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-2 text-sm-right">
+											Name:<span class="required">*</span>
+										</label>										
+                    <div class="col-sm-10">																						
+											<% if (user.canEditName) { %>
+												<input type="text" id="mapName" name="mapName" value="<%= maze.name %>" maxlength="20" required class="form-control" />
+											<% } else { %>
+												<input type="text" id="mapName" name="mapName" value="<%= maze.name %>" class="form-control" readonly />
+											<% } %>
+											<span data-validation-for="mapName" class="field-error"></span>
+                    </div>
+                  </div>
+
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-2 text-sm-right">
+											Status:<span class="required">*</span>
+										</label>
+                    <div class="col-sm-10">
+											<% if (user.canEditStatus) { %>
+												<select id="status" name="status" class="custom-select">
+													<option>-- Select --</option>
+													<% for(const status of statuses) { %>
+														<option value="<%=status%>" <%if (maze.status === status){%> selected <% } %>>
+															<%= status %>
+														</option>
+													<% } %>
+												</select>												
+											<% } else { %>
+												<select id="status" name="status" class="custom-select" disabled>
+													<option>-- Select --</option>
+													<% for(const status of statuses) { %>
+														<option value="<%=status%>" <%if (maze.status === status){%> selected <% } %>>
+															<%= status %>
+														</option>
+													<% } %>
+												</select>
+											<% } %>
+											<span data-validation-for="status" class="field-error"></span>
+                    </div>
+                  </div>
+
+									<% if (user.canEditStatus) { %>
+									<div id="rejectedReasonRow" class="form-group row" style="display: none;">
+                    <label class="col-form-label col-sm-2 text-sm-right">
+											Rejected Reason:<span class="required">*</span>
+										</label>										
+                    <div class="col-sm-10">																						
+											<input type="text" id="rejectedReason" name="rejectedReason" 
+														value="<%= maze.rejectedReason %>" maxlength="25" class="form-control" />
+											<span data-validation-for="rejectedReason" class="field-error"></span>
+                    </div>
+                  </div>
+									<% } %>
+
+
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-2 text-sm-right">
+											Cells Count:
+										</label>										
+                    <div class="col-sm-10">
+                      <span id="cellsCount" class="badge badge-warning" style="margin-top: 10px;"><%=maze.data.cells.length%>/<%=maxCells%></span>
+                    </div>
+                  </div>
+
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-2 text-sm-right">
+											Map Data:<span class="required">*</span>
+										</label>										
+                    <div class="col-sm-10">
+											<% let index = 0; %>
+											<%
+												function isCellSelected(row, col){
+													return maze.data.cells.some(cell => cell.x === col && cell.y === row);
+												}
+											%>											
+											<% for (let row=0; row < yGrids; row++) { %>
+												<div class="map-table">
+												<% for (let col=0; col < xGrids; col++) { %>
+													<% if (isCellSelected(row, col)) { %>
+														<% if (user.canEditMap) { %>
+															<div id="cell-<%=index++%>" class="map-table-cell selected-cell" 
+																data-selected="1" data-x="<%=col%>" data-y="<%=row%>"></div>
+														<% } else { %>
+															<div id="cell-<%=index++%>" class="map-table-cell selected-cell disabled-cell" 
+																data-selected="1" data-x="<%=col%>" data-y="<%=row%>"></div>
+														<% } %>														
+													<% } else { %>
+														<% if (user.canEditMap) { %>
+															<div id="cell-<%=index++%>" class="map-table-cell" 
+																data-selected="0" data-x="<%=col%>" data-y="<%=row%>"></div>
+															<% } else { %>
+																<div id="cell-<%=index++%>" class="map-table-cell disabled-cell" 
+																	data-selected="0" data-x="<%=col%>" data-y="<%=row%>"></div>
+															<% } %>														
+													<% } %>
+												<% } %>
+												</div>
+											<% } %>
+										
+											<span data-validation-for="mapData" class="field-error"></span>																						
+                    </div>
+                  </div>
+						
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-2 text-sm-right"></label>
+                    <div class="col-sm-10">
+                      <input type="submit" name="submit" value="Save" class="btn btn-primary" />
+
+											&nbsp;
+											<a class="btn btn-outline-secondary" href="/map/view/<%= maze.id %>">
+												Cancel
+											</a>
+                    </div>
+                  </div>
+								</form>
+              </div>
+            </div>
+
+          </div>
+          <!-- / Content -->
+
+          <!-- Layout footer -->
+          <nav class="layout-footer footer bg-footer-theme">
+            <div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+              <div class="pt-3">
+                <span class="footer-text font-weight-bolder">Tankster.io</span> ©
+              </div>              
+            </div>
+          </nav>
+          <!-- / Layout footer -->
+        </div>
+        <!-- Layout content -->
+      </div>
+      <!-- / Layout container -->
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-sidenav-toggle"></div>
+  </div>
+  <!-- / Layout wrapper -->
+
+	<script>
+		const canEditMap = "<%=user.canEditMap%>";
+		const mapStatus = "<%=maze.status%>";
+		const canEditStatus = "<%=user.canEditStatus%>";
+		const maxCells = parseInt("<%=maxCells%>");
+		let cellsCount = parseInt("<%=maze.data.cells.length%>");
+
+		$(document).ready(function(){			
+			// Rejected reason.
+			if (canEditStatus === "true"){
+				const reasonRow = document.getElementById('rejectedReasonRow');
+
+				// Initial visibility of "Rejected Reason" row.
+				if (mapStatus === 'Rejected'){
+					reasonRow.style.display = '';
+				}
+
+				const statusDropdown = document.getElementById('status');
+
+				statusDropdown.addEventListener('change', (event) => {
+					const showReasonTextbox = (event.target.value === 'Rejected');
+					
+					if (showReasonTextbox){						
+						reasonRow.style.display = '';
+					} else {
+						reasonRow.style.display = 'none';
+					}
+				});
+			}			
+			// ===================================================================
+
+			if (canEditMap === "true"){
+				document.querySelectorAll(".map-table-cell").forEach((elem) => {
+					elem.addEventListener("click", (e) => {						
+						// id: cell-0, cell-1, etc
+						// dataset.x, dataset.y
+
+						
+						const cell = e.currentTarget;
+						const selected = parseInt(cell.dataset.selected);
+
+						if (selected){
+							cellsCount--;
+							cell.dataset.selected = "0";
+							// cell.style.backgroundColor = "transparent";
+							cell.classList.remove("selected-cell");
+						} else {
+							// =========================================================
+							// Max cells check.
+							// =========================================================
+							if (cellsCount >= maxCells){
+								const msg = `Max number of cells reached: ${maxCells}.`;
+								try {          
+									$.growl.error({
+											title: 'Edit Map',
+											message: msg,
+											location: 'tc'
+										});
+								} catch (err){
+									console.log(err);
+								}  
+								return;
+							}
+							// =========================================================
+			
+							cellsCount++;			
+							cell.dataset.selected = "1";
+							// cell.style.backgroundColor = "rgba(125,125,125,0.5)";
+							cell.classList.add("selected-cell");
+						}
+						
+						document.getElementById("cellsCount").innerText = `${cellsCount}/${maxCells}`;
+					});
+				});
+			}			
+		});
+
+		function getMapData() {
+			let mapData = {
+				_id: getValueById('_id'),
+				mapName: getValueById('mapName'),
+				status: getValueById('status'),
+				rejectedReason: getValueById('rejectedReason'),
+				// xGrids: 40,
+				// yGrids: 40,
+				cells: []
+			}
+
+			document.querySelectorAll(".map-table-cell").forEach((elem) => {
+				if (parseInt(elem.dataset.selected)){
+					const cell = {
+						x: parseInt(elem.dataset.x),
+						y: parseInt(elem.dataset.y)
+					};
+					mapData.cells.push(cell);
+				}				
+			});
+
+			return mapData;
+		}
+
+		// Attach a submit handler to the form
+		$("#submitForm").submit(function(event) {
+		  	// Stop form from submitting normally
+		  	event.preventDefault();
+			$('input[type="submit"]').prop('disabled', true);
+			
+			const url = document.getElementById('submitForm').getAttribute('action');
+
+			// const data = {
+			// 	mapName: getValueById('mapName'),
+			// 	mapData: getMapData()
+			// };
+
+			const data = getMapData();
+
+			$.ajax({
+				type: 'POST',
+				data: JSON.stringify(data),
+				contentType: 'application/json',
+				url: url,								
+			})
+			.done(
+				function(data, textStatus, jqXHR){
+					toggleValidationErrors({});
+
+					if (data.redirectUrl){
+						window.location.href = data.redirectUrl;
+					}
+				}
+			)
+			.fail(
+				function(jqXHR, textStatus, errorThrown){
+					if (jqXHR.responseJSON){
+						toggleValidationErrors(jqXHR.responseJSON);
+						const msg = jqXHR.responseJSON ? jqXHR.responseJSON.message : errorThrown;
+						showMessagePanel(msg);
+					}
+					else {
+						if (textStatus === 'error'){
+							showMessagePanel('Unknown error.');
+						}
+					}
+				}
+			).always(
+					function(){
+						$('input[type="submit"]').prop('disabled', false);
+					}
+			);
+		});
+
+		function getValueById(elementId){
+			return document.getElementById(elementId).value;
+		}
+
+		function showMessagePanel(message){
+			if (message){
+				const element = document.getElementById('messagePanel');
+				if (element){
+					element.style.visibility = 'visible';
+					element.textContent = message;
+				}
+			}
+		}
+
+		function toggleValidationErrors(responseJSON){
+			if (responseJSON){
+				const errorDetails = responseJSON.errorDetails || {};
+				const validationErrorFields = document.querySelectorAll('span[data-validation-for]');
+
+				Array.from(validationErrorFields).forEach((element, index) => {
+					if (errorDetails[element.dataset.validationFor]){
+						element.textContent = errorDetails[element.dataset.validationFor].message;
+					} else {
+						element.textContent = '';
+					}
+				});
+			}
+		}
+	</script>
+<%- include('footer'); %>
