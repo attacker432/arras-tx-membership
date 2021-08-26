@@ -11,6 +11,5 @@
   { "name": "Owner", "value": 800 },  
   { "name": "Trusted owner", "value": 850 }, 
   { "name": "Co developer", "value": 900 },  
-  { "name": "Developer", "value": 1000 },
-  { "name": "Head developer", "value": 1500 }  
+  { "name": "Developer", "value": 1000 }  
 ]

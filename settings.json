@@ -6,12 +6,12 @@
     "minRoleToViewMemberPasswordHash": "Developer",
     "minRoleToViewMemberCountry": "Moderator",
     "minRoleToEditMemberUsername": "Owner", 
-    "minRoleToEditMemberPasswordHash": "Head developer",
+    "minRoleToEditMemberPasswordHash": "Developer",
     "minRoleToEditMemberRole": "Admin", 
     "minRoleToEditMemberStatus": "Admin",      
     "minRoleToDeleteMember": "Trusted owner",
     "minRoleToManageRole": "Admin", 
     "minRoleToDeleteRole": "Owner", 
-    "minRoleToEditSettings": "Head developer"
+    "minRoleToEditSettings": "Developer"
   }  
 ]
