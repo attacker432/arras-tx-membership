@@ -73,7 +73,7 @@
     "maxRequests": 3000
   },
 
-  "localhost": true,
+  "localhost": false,
   "sslPrivateKeyFilePath": "/etc/letsencrypt/live/sarra.io/privkey.pem",
   "sslCertificateFilePath": "/etc/letsencrypt/live/sarra.io/cert.pem",
   "sslFullChainFilePath": "/etc/letsencrypt/live/sarra.io/fullchain.pem"       

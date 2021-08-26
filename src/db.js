@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  process.env.MONGO_URI || "mongodb://arras-tx.andrewspec.repl.co:3000",
+  process.env.MONGO_URI || "mongodb://arras-tx.andrewspec.repl.co",
   {
     useNewUrlParser: true,
     useCreateIndex: true
