@@ -18,7 +18,7 @@ dependencies:
   lodash: 4.17.21
   moment: 2.29.1
   mongodb: 4.1.1
-  mongoose: 5.13.8
+  mongoose: 6.0.1
   nodemailer: 6.6.3
   passport: 0.4.1
   passport-local: 1.0.0
@@ -120,12 +120,6 @@ packages:
       node: 6.* || 8.* || >=10.*
     resolution:
       integrity: sha512-1HTW5Iu1oKw5r8cltAPfVFbaJjjIrWmYR8WP0I8br01ImUhy1/42vGCVl6QWkPP6pcAfsWNIrjSPx20ZcVNvVQ==
-  /@types/bson/4.0.5:
-    dependencies:
-      '@types/node': 16.7.1
-    dev: false
-    resolution:
-      integrity: sha512-vVLwMUqhYJSQ/WKcE60eFqcyuWse5fGH+NMAXHuKrUAPoryq3ATxk5o4bgYNtg5aOM4APVg7Hnb3ASqUYG0PKg==
   /@types/component-emitter/1.2.10:
     dev: false
     resolution:
@@ -138,13 +132,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==
-  /@types/mongodb/3.6.20:
-    dependencies:
-      '@types/bson': 4.0.5
-      '@types/node': 16.7.1
-    dev: false
-    resolution:
-      integrity: sha512-WcdpPJCakFzcWWD9juKoZbRtQxKIMYF/JIAM4JrNHrMcnJL6/a2NWjXxW7fo9hxboxxkg+icff8d7+WIEvKgYQ==
   /@types/node/16.7.1:
     dev: false
     resolution:
@@ -379,12 +366,10 @@ packages:
     dependencies:
       readable-stream: 2.3.7
       safe-buffer: 5.2.1
+    dev: true
+    optional: true
     resolution:
       integrity: sha512-6Pesp1w0DEX1N550i/uGV/TqucVL4AM/pgThFSN/Qq9si1/DF9aIHs1BxD8V/QU0HoeHO6cQRTAuYnLPKq1e4g==
-  /bluebird/3.5.1:
-    dev: false
-    resolution:
-      integrity: sha512-MKiLiV+I1AA596t9w1sQJ8jkiSr5+ZKi0WKrYGUn6d1Fx+Ij4tIj+m2WMQSGczs5jZVxV339chE8iwk6F64wjA==
   /bn.js/4.12.0:
     dev: true
     resolution:
@@ -554,8 +539,10 @@ packages:
     resolution:
       integrity: sha512-TkOR1cQGdmXU9zW4YukWzWVSJwrxmNdADFbqbE3HFgQWe5wqZmOawqZ7J/8MPCwk/W8yY7Y0h+7mOtcZxLP23g==
   /bson/1.1.6:
+    dev: true
     engines:
       node: '>=0.6.19'
+    optional: true
     resolution:
       integrity: sha512-EvVNVeGo4tHxwi8L6bPj3y3itEvStdwvvlojVxxbyYfoaxJ6keLgrTuKdyfEAszFK+H3olzBuafE0yoh0D1gdg==
   /bson/4.5.1:
@@ -936,12 +923,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
-  /debug/3.1.0:
-    dependencies:
-      ms: 2.0.0
-    dev: false
-    resolution:
-      integrity: sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
   /debug/3.2.7:
     dependencies:
       ms: 2.1.3
@@ -2403,8 +2384,10 @@ packages:
       denque: 1.5.1
       optional-require: 1.1.7
       safe-buffer: 5.2.1
+    dev: true
     engines:
       node: '>=4'
+    optional: true
     optionalDependencies:
       saslprep: 1.0.3
     resolution:
@@ -2421,50 +2404,38 @@ packages:
       saslprep: 1.0.3
     resolution:
       integrity: sha512-fbACrWEyvr6yl0sSiCGV0sqEiBwTtDJ8iSojmkDjAfw9JnOZSAkUyv9seFSPYhPPKwxp1PDtyjvBNfMDz0WBLQ==
-  /mongoose-legacy-pluralize/1.0.2:
-    dev: false
-    peerDependencies:
-      mongoose: '*'
-    resolution:
-      integrity: sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
-  /mongoose/5.13.8:
+  /mongoose/6.0.1:
     dependencies:
-      '@types/mongodb': 3.6.20
-      bson: 1.1.6
+      bson: 4.5.1
       kareem: 2.3.2
-      mongodb: 3.6.11
-      mongoose-legacy-pluralize: 1.0.2
+      mongodb: 4.1.1
       mpath: 0.8.3
-      mquery: 3.2.5
+      mquery: 4.0.0
       ms: 2.1.2
-      optional-require: 1.0.3
       regexp-clone: 1.0.0
-      safe-buffer: 5.2.1
       sift: 13.5.2
       sliced: 1.0.1
     dev: false
     engines:
-      node: '>=4.0.0'
+      node: '>=12.0.0'
     resolution:
-      integrity: sha512-z3d+qei9Dem/LxRcJi0cdGPKzQnYk71oHEsEfYm17JA/vLiAbJiGuBS2hW7vkd9afkPAqu3KsPZh2ax0c5iPQw==
+      integrity: sha512-WESkAtJuJqXKjiQj+HiL3Ipr6eLWx9RIrjCE2HzxScUApnFLXSHdd5gGCeEE3Pl+qcill4fGYy/uysThCMQ6PQ==
   /mpath/0.8.3:
     dev: false
     engines:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-eb9rRvhDltXVNL6Fxd2zM9D4vKBxjVVQNLNijlj7uoXUy19zNDsIif5zR+pWmPCWNKwAtqyo4JveQm4nfD5+eA==
-  /mquery/3.2.5:
+  /mquery/4.0.0:
     dependencies:
-      bluebird: 3.5.1
-      debug: 3.1.0
+      debug: 4.3.2
       regexp-clone: 1.0.0
-      safe-buffer: 5.1.2
       sliced: 1.0.1
     dev: false
     engines:
-      node: '>=4.0.0'
+      node: '>=12.0.0'
     resolution:
-      integrity: sha512-VjOKHHgU84wij7IUoZzFRU07IAxd5kWJaDmyUzQlbjHjyoeK5TNeeo8ZsFDtTYnSgpW6n/nMNIHvE3u8Lbrf4A==
+      integrity: sha512-nGjm89lHja+T/b8cybAby6H0YgA4qYC/lx6UlwvHGqvTq8bDaNeCwl1sY8uRELrNbVWJzIihxVd+vphGGn1vBw==
   /ms/2.0.0:
     dev: false
     resolution:
@@ -2689,17 +2660,13 @@ packages:
       wrappy: 1.0.2
     resolution:
       integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=
-  /optional-require/1.0.3:
-    dev: false
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha512-RV2Zp2MY2aeYK5G+B/Sps8lW5NHAzE5QClbFP15j+PWmP+T9PxlJXBOOLoSAdgwFvS4t0aMR4vpedMkbHfh0nA==
   /optional-require/1.1.7:
     dependencies:
       require-at: 1.0.6
+    dev: true
     engines:
       node: '>=4'
+    optional: true
     resolution:
       integrity: sha512-cIeRZocXsZnZYn+SevbtSqNlLbeoS4mLzuNn4fvXRMDRNhTGg0sxuKXl0FnZCtnew85LorNxIbZp5OeliILhMw==
   /os-browserify/0.3.0:
@@ -3119,8 +3086,10 @@ packages:
     resolution:
       integrity: sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==
   /require-at/1.0.6:
+    dev: true
     engines:
       node: '>=4'
+    optional: true
     resolution:
       integrity: sha512-7i1auJbMUrXEAZCOQ0VNJgmcT2VOKPRl2YGJwgpHpC9CE91Mv4/4UYIUm4chGJaI381ZDq1JUicFii64Hapd8g==
   /requires-port/1.0.0:
@@ -3949,7 +3918,7 @@ specifiers:
   moment: ^2.29.1
   mongodb: ^4.1.0
   mongodb-memory-server: ^5.1.0
-  mongoose: ^5.5.4
+  mongoose: ^6.0.0
   nanohtml: ^1.5.0
   nodemailer: ^6.4.6
   passport: ^0.4.0
