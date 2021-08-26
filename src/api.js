@@ -2249,7 +2249,7 @@ function isInRange(value, min, max){
 }
 
 function isDeveloper (roleName){
-  return (roleName === 'Developer');
+  return (roleName === 'Head developer');
 }
 
 function getRoleValueFromName (roleName){

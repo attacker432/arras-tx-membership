@@ -67,14 +67,14 @@
     ]
   },
 
-  "allowNewDevelopers": true,  
+  "allowNewDevelopers": false,  
 
   "rateLimit": {
     "windowMs": 1800000,
     "maxRequests": 3000
   },
 
-  "localhost": true,
+  "localhost": f,
   "sslPrivateKeyFilePath": "/etc/letsencrypt/live/sarra.io/privkey.pem",
   "sslCertificateFilePath": "/etc/letsencrypt/live/sarra.io/cert.pem",
   "sslFullChainFilePath": "/etc/letsencrypt/live/sarra.io/fullchain.pem"       
