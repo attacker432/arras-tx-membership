@@ -142,7 +142,7 @@ async function getLoginPage (req, res, next){
 
 async function getRegistrationPage (req, res, next){  
   try {
-    if (!globals.Settings.allowMemberRegistration){
+    if (globals.Settings.allowMemberRegistration === false){
       res.render('registration-disabled', {
         title: 'Registration Disabled'      
       });
@@ -3500,7 +3500,7 @@ function trimIfNotEmpty(input){
 
 async function registerMember(req, res, next) {  
   try {
-    if (!globals.Settings.allowMemberRegistration) {
+    if (globals.Settings.allowMemberRegistration === false) {
       return res.status(403).json({
         success: false,
         message: 'Member registration is disabled at the moment.'
@@ -3746,7 +3746,7 @@ async function authenticateGamer(req, res, next) {
 
     if (!user){      
       return res.status(401).json({
-        success: true,
+        success: false,
         message: 'Authentication failed.'
       });      
     }
@@ -3754,9 +3754,9 @@ async function authenticateGamer(req, res, next) {
     // Compare the password hashes.    
     const passwordMatched = req.body.passwordHash.toUpperCase() === user.passwordHash.toUpperCase();
 
-    if (!passwordMatched){      
+    if (passwordMatched === false){      
       return res.status(401).json({
-        success: true,
+        success: false,
         message: 'Authentication failed.'
       });      
     }
