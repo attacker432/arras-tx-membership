@@ -28,6 +28,7 @@ dependencies:
   serve-favicon: 2.5.0
   sha256: 0.2.0
   socket.io: 4.1.3
+  text-encoder: 0.0.4
   validator: 10.11.0
   ws: 7.5.3
 devDependencies:
@@ -3553,6 +3554,10 @@ packages:
       node: '>=4.5'
     resolution:
       integrity: sha512-a20gEsvHnWe0ygBY8JbxoM4w3SJdhc7ZAuxkLqh+nvNQN2IOt0B5lLgM490X5Hl8FF0dl0tOf2ewFYAlIFgzVA==
+  /text-encoder/0.0.4:
+    dev: false
+    resolution:
+      integrity: sha512-12gllbNnC0Zdh9r+LCpEwpUdvncaE9hfUmCVm2ryCH1LEVUZbS6NdRq8omEgJI0zKgaGFTjwQVHbglGDCIbmNA==
   /through/2.3.8:
     dev: true
     resolution:
@@ -3930,6 +3935,7 @@ specifiers:
   sha256: ^0.2.0
   socket.io: ^4.0.1
   tape: ^4.10.1
+  text-encoder: ^0.0.4
   unsplash-js: ^5.0.0
   validator: ^10.11.0
   ws: ^7.4.5

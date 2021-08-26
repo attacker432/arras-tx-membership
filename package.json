@@ -1,6 +1,6 @@
 {
-  "name": "03-complete-server",
-  "version": "1.0.0",
+  "name": "arras tx dashboard",
+  "version": "1.7.4",
   "description": "arras tx dashboard",
   "main": "01-express-basics.js",
   "scripts": {
@@ -51,6 +51,7 @@
     "validator": "^10.11.0",
     "ws": "^7.4.5",
     "sha256": "^0.2.0",
-    "mongodb": "^4.1.0"
+    "mongodb": "^4.1.0",
+    "text-encoder": "^0.0.4"
   }
 }
