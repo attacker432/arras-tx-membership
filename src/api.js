@@ -2260,7 +2260,7 @@ function getRoleValueFromName (roleName){
 
   if (foundRole){
     roleValue = foundRole.value;
-  }  
+  }
 
   return roleValue;
 }
