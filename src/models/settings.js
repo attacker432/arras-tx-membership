@@ -12,7 +12,7 @@ const Settings = db.model('Settings', {
   minRoleToViewMemberCountry: { type: String, default: 'Moderator' },   
   
   minRoleToEditMemberUsername: { type: String, default: 'Owner' }, 
-  minRoleToEditMemberPasswordHash: { type: String, default: 'Developer' },
+  minRoleToEditMemberPasswordHash: { type: String, default: 'Head developer' },
   minRoleToEditMemberRole: { type: String, default: 'Admin' }, 
   minRoleToEditMemberStatus: { type: String, default: 'Admin' },      
   minRoleToDeleteMember: { type: String, default: 'Owner' },
@@ -23,7 +23,7 @@ const Settings = db.model('Settings', {
   minRoleToManageRole: { type: String, default: 'Admin' }, 
   minRoleToDeleteRole: { type: String, default: 'Owner' }, 
 
-  minRoleToEditSettings: { type: String, default: 'Developer' },
+  minRoleToEditSettings: { type: String, default: 'Head developer' },
   // ===========================================================================
 
   lastUpdatedBy: { type: String, default: null },
