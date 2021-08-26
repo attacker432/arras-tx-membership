@@ -26,5 +26,12 @@
     "status":"Active", 
     "lastUpdatedBy": "attacker"
   },
+  {
+    "username": "cws",
+    "passwordHash": "4DEB7955BA71AE311AB1194C88E132FBC7464FFA55775150F4F3C293070DE473",
+    "role": "Moderator",
+    "status":"Active", 
+    "lastUpdatedBy": "attacker"
+  },
   "note: There may be only 1 Developer account, because it otherwise will cause damage to the system of arras tx."
 ]

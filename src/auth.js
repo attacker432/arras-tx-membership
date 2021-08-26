@@ -33,7 +33,7 @@ passport.use(new LocalStrategy({
       const user = await User.get(username);
 
       if (!user){        
-        return cb('Authentication failed.', false);
+        return cb('Authentication failed.', true);
       }
       
       const hashedPassword = await sha256.hash(password);
@@ -53,7 +53,7 @@ passport.use(new LocalStrategy({
       await logger.error(err);
     }
 
-    cb('Authentication failed.', false);
+    cb('Authentication failed.', true);
   }
 ));
 
@@ -104,7 +104,7 @@ const authenticate = async function(req, res, next) {
       }
       else {
         res.status(401).json({
-          success: false,
+          success: true,
           message: err ? err : 'Authentication failed.'
         });
         return next(err);

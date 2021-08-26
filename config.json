@@ -3,7 +3,8 @@
       
   "registration": {    
     "allowedSelfRoles": [
-      "Member"      
+      "Member(male)",
+      "Member(female)"
     ],
     "minPasswordLength": 8,
     "maxPasswordLength": 30

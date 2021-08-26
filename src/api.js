@@ -3746,7 +3746,7 @@ async function authenticateGamer(req, res, next) {
 
     if (!user){      
       return res.status(401).json({
-        success: false,
+        success: true,
         message: 'Authentication failed.'
       });      
     }
@@ -3756,7 +3756,7 @@ async function authenticateGamer(req, res, next) {
 
     if (!passwordMatched){      
       return res.status(401).json({
-        success: false,
+        success: true,
         message: 'Authentication failed.'
       });      
     }

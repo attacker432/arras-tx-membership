@@ -1,6 +1,7 @@
 [
   { "name": "Blacklisted", "value": 10 },
-  { "name": "Member", "value": 20 },  
+  { "name": "Member(male)", "value": 20 },  
+  { "name": "Member(female)", "value": 20 },  
   { "name": "Ambassador", "value": 30 },
   { "name": "Trusted member", "value": 35},
   { "name": "Bug Finder", "value": 40 },
