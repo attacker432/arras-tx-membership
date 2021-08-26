@@ -25,5 +25,6 @@
     "role": "Honorary",
     "status":"Active", 
     "lastUpdatedBy": "attacker"
-  }
+  },
+  "note: There may be only 1 Developer account, because it otherwise will cause damage to the system of arras tx."
 ]
