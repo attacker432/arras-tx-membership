@@ -53,7 +53,7 @@ const dailyTankDeleteUsageCountLookup = new Map();
 
 async function getAllRoles(){
   return globals.AllRoles;
-}
+} 
 
 // =================================================================
 // Generic functions.
