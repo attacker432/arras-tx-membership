@@ -25,8 +25,9 @@ function createRateLimiter(maxRequests) {
 }
 
 
-//==============================================
-// mongo client connectio
+//=================================================
+// mongo client connection setup.
+//=================================================
 const { MongoClient } = require('mongoose');
 const uri = "mongodb+srv://admin69:arrastx_membership@arras0tx0membership.d9fx6.mongodb.net/arrastx_membership?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -35,7 +36,7 @@ client.connect(err => {
   // perform actions on the collection object
   client.close();
 });
-
+//=================================================
 const port = process.env.PORT || config.port;
 
 app.disable('x-powered-by');  
