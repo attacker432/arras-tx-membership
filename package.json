@@ -52,6 +52,7 @@
     "ws": "^7.4.5",
     "mongodb": "^4.1.0",
     "sha256": "^0.2.0",
-    "text-encoder": "^0.0.4"
+    "text-encoder": "^0.0.4",
+    "mongoose-atlas-search": "^1.0.7"
   }
 }
