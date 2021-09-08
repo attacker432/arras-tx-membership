@@ -3347,7 +3347,7 @@ async function updateMember(req, res, next){
         }
       }
       else {
-        await createServerAudit(user._id, user.username, req.ip, `User ${user.username} tried to update the member ${member.username}.`);
+        await createServerAudit(user._id, user.username, `User ${user.username} tried to update the member ${member.username}.`);
 
         return res.status(403).json({
             success: false,
