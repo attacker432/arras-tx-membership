@@ -3760,8 +3760,13 @@ async function authenticateGamer(req, res, next) {
         message: 'Authentication failed.'
       });      
     }
-
-    // Check the status.
+if (user.status === globals.SuspendedStatus) {
+  const data = {
+    succes: false,
+    messa
+  }
+}
+    // Check the status, extra security layer.
     if (user.status === globals.ActiveStatus){
       const roleValue = getRoleValueFromName(user.role);
       const roleColor = getRoleColorFromName(user.role);
