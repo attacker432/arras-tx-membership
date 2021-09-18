@@ -3760,12 +3760,19 @@ async function authenticateGamer(req, res, next) {
         message: 'Authentication failed.'
       });      
     }
-if (user.status === globals.SuspendedStatus) {
-  const data = {
-    succes: false,
-    messa
-  }
-}
+  if (user.status === globals.SuspendedStatus){
+    const data = {
+      succes: false,
+       message: `Your account is suspended by ${user.lastUpdatedBy}`
+      } 
+    }
+      else if (user.status === globals.InactiveStatus){
+        const data = {
+          succes: false,
+        message: 'Please ask a staff member to activate your account first.'
+        }
+      }
+    
     // Check the status, extra security layer.
     if (user.status === globals.ActiveStatus){
       const roleValue = getRoleValueFromName(user.role);
