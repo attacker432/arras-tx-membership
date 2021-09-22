@@ -53,6 +53,8 @@
     "mongodb": "^4.1.0",
     "sha256": "^0.2.0",
     "text-encoder": "^0.0.4",
-    "mongoose-atlas-search": "^1.0.7"
+    "mongoose-atlas-search": "^1.0.7",
+    "schemapack": "^1.4.2",
+    "serve-buffer": "^2.3.0"
   }
 }
