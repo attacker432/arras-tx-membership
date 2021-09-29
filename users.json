@@ -5,33 +5,5 @@
     "role": "Developer",
     "status":"Active", 
     "lastUpdatedBy": "System"
-  },
-  {
-    "username": "Werid",
-    "passwordHash": "FCA7E913EE8EB6F696B33607ACD5A689B78F6622D44966DE9F18D7F10913EAF1",
-    "role": "Trusted owner",
-    "status":"Active", 
-    "lastUpdatedBy": "attacker"
-  },
-    {
-    "username": "Aorona",
-    "passwordHash": "356E11383185806BF35BB3DD51302B9526E4450C70B447ECCEC6285E7AB1494A",
-    "role": "Trusted owner",
-    "status":"Active", 
-    "lastUpdatedBy": "attacker"
-  },  {
-    "username": "DarianPlayz",
-    "passwordHash": "654A2F8F563501C1DB40D453BB4E647915FBC1760D926F4A0A33ADB097F78B6E",
-    "role": "Honorary",
-    "status":"Active", 
-    "lastUpdatedBy": "attacker"
-  },
-  {
-    "username": "cws",
-    "passwordHash": "4DEB7955BA71AE311AB1194C88E132FBC7464FFA55775150F4F3C293070DE473",
-    "role": "Moderator",
-    "status":"Active", 
-    "lastUpdatedBy": "attacker"
-  },
-  "note: There may be only 1 Developer account, because it otherwise will cause damage to the system of arras tx."
+  }
 ]
