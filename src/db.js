@@ -11,11 +11,11 @@ module.exports = mongoose; */
 // here is where we connect to the database
 const mongoose = require('mongoose');
 const mongodb_URI =
-  "mongodb+srv://LB:Lionim4321@cluster0.w6jgm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //process.env.MONGODB_URI
+  "mongodb+srv://LB:Lionim4321@cluster0.w6jgm.mongodb.net/cluster0?retryWrites=true&w=majority"; //process.env.MONGODB_URI
 //const mongodb_URI = 'mongodb+srv://tjhickey:WcaLKkT3JJNiN8dX@cluster0.kgugl.mongodb.net/atlasAuthDemo?retryWrites=true&w=majority' //process.env.MONGODB_URI
 const dbURL = mongodb_URI;
-mongoose.connect(dbURL, { useUnifiedTopology: true, 
-    useCreateIndex: true, useNewUrlParser: true  });
+mongoose.connect(dbURL, {
+    useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true  });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
