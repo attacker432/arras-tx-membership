@@ -23,10 +23,10 @@ function createRateLimiter(maxRequests) {
     max: maxRequests || config.rateLimit.maxRequests, // start blocking after "maxRequests" requests  
   });
 }
-//import roles, settings and users seperatly in server.js because we dont have terminal.
-const import_roles = require('./script/import/import-roles.js');
+
+  
 const import_settings = require('./script/import/import-settings.js');
-const import_users = require('./script/import/import-users.js');
+
 
 //=================================================
 // mongo client connection setup.
