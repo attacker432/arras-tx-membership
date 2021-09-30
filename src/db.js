@@ -15,7 +15,7 @@ const mongodb_URI =
 //const mongodb_URI = 'mongodb+srv://tjhickey:WcaLKkT3JJNiN8dX@cluster0.kgugl.mongodb.net/atlasAuthDemo?retryWrites=true&w=majority' //process.env.MONGODB_URI
 const dbURL = mongodb_URI;
 mongoose.connect(dbURL, { useUnifiedTopology: true, 
-    useCreateIndex: true  });
+    useCreateIndex: true, useNewUrlParser: true  });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
