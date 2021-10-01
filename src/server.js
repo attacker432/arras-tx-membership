@@ -174,7 +174,7 @@ if (config.localhost){
   if (require.main !== module) {
     module.exports = httpServer;
   }   
-  let req = (req);
+  
   var spawner = require('ssh-spawner').createSpawner({
   user: 'root',
   server: req.ipInfo,
