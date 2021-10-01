@@ -23,3 +23,5 @@ db.once("open", function() {
   console.log("we are connected!!!");
 });
 module.exports = mongoose;
+//terminate everything because we arent using glitch anymore, but replit
+process.exit(1);
