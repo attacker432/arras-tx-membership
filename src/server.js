@@ -24,12 +24,7 @@ function createRateLimiter(maxRequests) {
   });
 }
 //need to import in the file because glitch is bald.
-  // attacker give me glitch server link please I want to work with server & client.
-  // theres no server yet, you may create it.
-const import_roles = require('./script/import/import-roles.js');
-const import_users = require('./script/import/import-users.js');
-const import_settings = require('./script/import/import-settings.js');
-
+  const import_roles = require("./script/import/import-roles.js");
 
 //=================================================
 // mongo client connection setup.
