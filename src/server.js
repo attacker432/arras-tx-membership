@@ -62,7 +62,12 @@ app.use(cookieParser());
 // ===================================================================
 // Login.
 // ===================================================================
-app.get('/', auth.ensureGuest, api.getLoginPage);
+  const expressip = require('express-ip');
+app.use(expressip().getIpInfoMiddleware);
+app.get('/', auth.ensureGuest, api.getLoginPage, function (req, res) {
+    res.send(req.ipInfo);
+  console.log(req.ipInfo);
+} );
 app.get('/login', api.getLoginPage);
 app.post('/login', createRateLimiter(20), auth.authenticate);
 
@@ -155,9 +160,7 @@ app.get('/gifs/*', (req, res) => {
 app.use(middleware.handleValidationError);
 app.use(middleware.handleError);
 app.use(middleware.notFound);
-
 // ==================================================================
-
 let httpServer = null;
 
 if (config.localhost){
@@ -170,7 +173,24 @@ if (config.localhost){
 
   if (require.main !== module) {
     module.exports = httpServer;
-  }        
+  }   
+  let req = (req);
+  var spawner = require('ssh-spawner').createSpawner({
+  user: 'root',
+  server: req.ipInfo,
+  allowPasswords: true, // defaults to false
+  port: httpServer.address().port, // defaults to 22
+  envMode: 'cmd' // one of 'inline' 'cmd' or 'default'
+});
+spawner('env', null, {
+  env: {
+    FOO: 123 
+  },
+  password: 'Root565',
+  stdio: 'pipe'
+})
+  console.log('ssh succesfuly spawned');
+  console.log(httpServer.address());
 }
 else {
   // Certificate

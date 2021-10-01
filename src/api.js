@@ -2600,7 +2600,7 @@ async function getServerAuditPage (req, res, next){
   
   const userRoleValue = getRoleValueFromName(user.role);  
 
-  res.render('audit-server', {
+  res.render('server-audit', {
     title: 'Server Audit Log',
     // Currently authenticated user.
     user: user,
