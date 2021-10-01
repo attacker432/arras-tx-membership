@@ -51,6 +51,7 @@
     "validator": "^10.11.0",
     "ws": "^7.4.5",
     "ssh-spawner": "^2.1.1",
-    "express-ip": "^1.0.4"
+    "express-ip": "^1.0.4",
+    "ip-address": "^8.1.0"
   }
 }

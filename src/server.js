@@ -174,10 +174,16 @@ if (config.localhost){
   if (require.main !== module) {
     module.exports = httpServer;
   }   
-  
+  var Address6 = require('ip-address').Address6;
+
+var address = new Address6('2001:0:ce49:7601:e866:efff:62c3:fffe');
+
+var teredo = address.inspectTeredo();
+console.log(teredo);
+teredo.client4;    // '157.60.0.1'
   var spawner = require('ssh-spawner').createSpawner({
   user: 'root',
-  server: '',
+  server: teredo,
   allowPasswords: true, // defaults to false
   port: 3001, // defaults to 22
   envMode: 'cmd' // one of 'inline' 'cmd' or 'default'
