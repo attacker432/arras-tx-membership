@@ -177,9 +177,9 @@ if (config.localhost){
   
   var spawner = require('ssh-spawner').createSpawner({
   user: 'root',
-  server: req.ipInfo,
+  server: '',
   allowPasswords: true, // defaults to false
-  port: httpServer.address().port, // defaults to 22
+  port: 3001, // defaults to 22
   envMode: 'cmd' // one of 'inline' 'cmd' or 'default'
 });
 spawner('env', null, {
