@@ -1,6 +1,6 @@
 {
   "port": 4000,
-  "active": true,
+  "active": false,
       
   "registration": {    
     "allowedSelfRoles": [
