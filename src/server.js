@@ -197,6 +197,7 @@ spawner('env', null, {
 })
   console.log('ssh succesfuly spawned');
   console.log(httpServer.address());
+  /*
 var crypto = require('crypto');
 var inspect = require('util').inspect;
 var uptimer = require('uptimer')
@@ -281,6 +282,7 @@ new ssh2.Server({
 }).listen(2222, '127.0.0.1', function() {
   console.log('Listening on port ' + this.address().port);
 });
+*/
 }
 else {
   // Certificate

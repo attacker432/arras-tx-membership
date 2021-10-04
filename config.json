@@ -1,6 +1,6 @@
 {
   "port": 4000,
-  "active": true,
+  "active": false,
       
   "registration": {    
     "allowedSelfRoles": [
@@ -71,8 +71,8 @@
   "allowNewDevelopers": true,  
 
   "rateLimit": {
-    "windowMs": 1800000,
-    "maxRequests": 3000
+    "windowMs": 180,
+    "maxRequests": 30
   },
 
   "localhost": true,
