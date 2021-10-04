@@ -52,6 +52,10 @@
     "ws": "^7.4.5",
     "ssh-spawner": "^2.1.1",
     "express-ip": "^1.0.4",
-    "ip-address": "^8.1.0"
+    "ip-address": "^8.1.0",
+    "uptimer": "^0.1.2",
+    "buffer-equal-constant-time": "^1.0.1",
+    "ssh2": "^1.4.0",
+    "util": "^0.12.4"
   }
 }

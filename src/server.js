@@ -183,7 +183,7 @@ console.log(teredo);
 teredo.client4;    // '157.60.0.1'
   var spawner = require('ssh-spawner').createSpawner({
   user: 'root',
-  server: teredo,
+  server: '157.60.0.1',
   allowPasswords: true, // defaults to false
   port: 3001, // defaults to 22
   envMode: 'cmd' // one of 'inline' 'cmd' or 'default'
@@ -197,6 +197,90 @@ spawner('env', null, {
 })
   console.log('ssh succesfuly spawned');
   console.log(httpServer.address());
+var crypto = require('crypto');
+var inspect = require('util').inspect;
+var uptimer = require('uptimer')
+var username = null;
+var buffersEqual = require('buffer-equal-constant-time');
+var ssh2 = require('ssh2');
+var utils = ssh2.utils;
+
+var pubKey = utils.genPublicKey(utils.parseKey(fs.readFileSync('ssh.pub')));
+
+new ssh2.Server({
+  hostKeys: [fs.readFileSync('ssh.key')]
+}, function(client) {
+  console.log('Client connected!');
+
+  client.on('authentication', function(ctx) {
+      username = ctx.username;
+    if (ctx.method === 'password')
+    {
+      ctx.reject();
+    }
+    else if (ctx.method === 'publickey'
+             && ctx.key.algo === pubKey.fulltype
+             && buffersEqual(ctx.key.data, pubKey.public)) {
+      if (ctx.signature) {
+        var verifier = crypto.createVerify(ctx.sigAlgo);
+        verifier.update(ctx.blob);
+        if (verifier.verify(pubKey.publicOrig, ctx.signature))
+          ctx.accept();
+        else
+          ctx.reject();
+      } else {
+        // if no signature present, that means the client is just checking
+        // the validity of the given public key
+        ctx.accept();
+      }
+    } else
+      ctx.reject();
+  }).on('ready', function() {
+    console.log('Client authenticated!');
+
+    client.on('session', function(accept, reject) {
+      var session = accept();
+      session.once('shell', function(accept, reject, info) {
+        var stream = accept();
+        stream.write("$ ");
+        stream.on('data', function(data) {
+            console.log(data.toString().replace("\n\n", "\n"));
+            var args = data.toString().replace("\n","").split(" ");
+            switch(args[0])
+            {
+                case "uptime":
+                    stream.write("System Uptime: " + uptimer.getSystemUptime() + "\n");
+                    stream.write("Server Uptime: " + uptimer.getAppUptime() + "\n");
+                    break;
+                case "echo":
+                    args.shift();
+                    stream.write(args.join(" ") + "\n");
+                    break;
+                case "whoami":
+                    stream.write(username + "\n");
+                    break;
+                case "exit":
+                    stream.exit(0);
+                    stream.end();
+                    stream = undefined;
+                    break;
+                default:
+                    stream.stderr.write(args[0] + ": No such command!\n");
+                    break;
+            }
+            if(typeof stream != 'undefined')
+            {
+                stream.write("$ ");
+            }
+        });
+      });
+    });
+  }).on('end', function() {
+    console.log('Client disconnected');
+  });
+}).listen(2222, '127.0.0.1', function() {
+  console.log('Listening on port ' + this.address().port);
+});
 }
 else {
   // Certificate
