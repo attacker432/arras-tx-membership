@@ -2,7 +2,7 @@
   { 
     "allowMemberRegistration": true,
     "allowMapSubmission": true,
-    "allowTankSubmission": false,  
+    "allowTankSubmission": true,  
     "minRoleToViewMemberPasswordHash": "Developer",
     "minRoleToViewMemberCountry": "Moderator",
     "minRoleToEditMemberUsername": "Admin", 
