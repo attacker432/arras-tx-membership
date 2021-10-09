@@ -5,13 +5,13 @@
     "allowTankSubmission": false,  
     "minRoleToViewMemberPasswordHash": "Developer",
     "minRoleToViewMemberCountry": "Moderator",
-    "minRoleToEditMemberUsername": "Owner", 
-    "minRoleToEditMemberPasswordHash": "Developer",
+    "minRoleToEditMemberUsername": "Admin", 
+    "minRoleToEditMemberPasswordHash": "Admin",
     "minRoleToEditMemberRole": "Admin", 
     "minRoleToEditMemberStatus": "Admin",      
-    "minRoleToDeleteMember": "Trusted owner",
+    "minRoleToDeleteMember": "Admin",
     "minRoleToManageRole": "Admin", 
-    "minRoleToDeleteRole": "Owner", 
-    "minRoleToEditSettings": "Developer"
+    "minRoleToDeleteRole": "Admin", 
+    "minRoleToEditSettings": "Owner"
   }  
 ]
