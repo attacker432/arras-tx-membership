@@ -7,14 +7,14 @@ const sha256 = require('./sha256');
 const config = require('../config.json');
 const utils = require('./utils');
 const ftb = require('./ftb/ftb');
-const User = require('./models/user');
+const User = require('./models/user')
 const Tank = require('./models/tank');
 const Maze = require('./models/maze');
 const ServerAudit = require('./models/server-audit');
 const GameAudit = require('./models/game-audit');
 const Role = require('./models/role');
 const Settings = require('./models/settings');
-let maxEval = 100;
+
 async function populateRoleLookups(){
   globals.AllRoles = await Role.getAll();
   // Sort in ascending order by role value.  
@@ -53,7 +53,7 @@ const dailyTankDeleteUsageCountLookup = new Map();
 
 async function getAllRoles(){
   return globals.AllRoles;
-}
+} 
 
 // =================================================================
 // Generic functions.
@@ -772,9 +772,7 @@ async function updateTank(req, res, next){
       // =============================================================================
       // Editing status.
       // =============================================================================
-    const minRoleToEditTankStatus = 
-          getRoleValueFromName(globals.Settings.minRoleToEditTankStatus) || globals.MaxRoleValue; 
-      if (userRoleValue >= minRoleToEditTankStatus){
+      if (userRoleValue >= config.tankEdit.minRoleValueToEditStatus){
         if (req.body.status && req.body.status !== tank.status){
 
           // Validate the status.
@@ -870,8 +868,8 @@ async function getTankDeletePage (req, res, next){
       tank.statusColor = config.statusColors[tank.status];
       
       const userRoleValue = getRoleValueFromName(user.role);
-      
-   const minRoleValueToDeleteTank = getRoleValueFromName(globals.Settings.minRoleToDeleteTank) || globals.MaxRoleValue; 
+
+      user.canDeleteTank = (user.id === tank.submittedBy) || (userRoleValue >= config.tankDelete.minRoleValueToViewDeletePage);
 
       res.render('tank-delete', {
         title: 'Tank Details (Delete Page)',
@@ -890,7 +888,6 @@ async function getTankDeletePage (req, res, next){
 
 async function deleteTank (req, res, next){
   try {
-    
     const jwtString = req.headers.authorization || req.cookies.jwt;
     const username = await auth.getUsernameFromToken(jwtString);
 
@@ -908,11 +905,10 @@ async function deleteTank (req, res, next){
 
       const user = await User.get(username);            
       const userRoleValue = getRoleValueFromName(user.role);
-    const minRoleValueToDeleteTank = 
-          getRoleValueFromName(globals.Settings.minRoleToDeleteTank) || globals.MaxRoleValue; 
-      if ((userRoleValue < minRoleToDeleteTank) &&
+
+      if ((userRoleValue < config.tankDelete.minRoleValueToDeleteTank) &&
           (user.id !== tank.submittedBy)) {
-        await createServerAudit(user._id, user.username, `Unauthorized user ${user.username} tried to delete the tank ${tank.tankName}.`);
+        await createServerAudit(user._id, user.username, req.ip, `Unauthorized user ${user.username} tried to delete the tank ${tank.tankName}.`);
 
         res.status(403);
         res.json({
@@ -1067,7 +1063,7 @@ async function changePassword (req, res, next) {
     // =================================================================================================================
     // Make sure the current password is correct.
     // =================================================================================================================
-   let currentPasswordHash = await sha256.hash(req.body.currentPassword);
+    let currentPasswordHash = await sha256.hash(req.body.currentPassword);
     currentPasswordHash = currentPasswordHash.toUpperCase();
 
     if (currentPasswordHash !== user.passwordHash){
@@ -1116,7 +1112,7 @@ async function changePassword (req, res, next) {
     if (updatedMember){
       // Audit trail.
       const action = `${user.username} changed the password. Old password hash: ${currentPasswordHash}`;
-      await createServerAudit(user._id, user.username,  action);
+      await createServerAudit(user._id, user.username, req.ip, action);
 
       // Force the user to log out.
       globals.BlacklistedTokens.push(jwtString);
@@ -1273,6 +1269,7 @@ async function getMemberListPage(req, res, next){
     const minRoleValueToEditMemberPasswordHash = getRoleValueFromName(globals.Settings.minRoleToEditMemberPasswordHash) || globals.MaxRoleValue;
     const minRoleValueToEditMemberRole = getRoleValueFromName(globals.Settings.minRoleToEditMemberRole) || globals.MaxRoleValue;
     const minRoleValueToEditMemberStatus = getRoleValueFromName(globals.Settings.minRoleToEditMemberStatus) || globals.MaxRoleValue; 
+
     const hasEditPermission = (userRoleValue >= minRoleValueToEditMemberUsername ||
       userRoleValue >= minRoleValueToEditMemberPasswordHash ||
       userRoleValue >= minRoleValueToEditMemberRole ||
@@ -1474,7 +1471,7 @@ async function getRoleEditPage (req, res, next){
     const user = await User.get(username);
 
     if (user.status !== globals.ActiveStatus){
-      await createServerAudit(user._id, user.username,  `Inactive user ${user.username} tried to access Role Edit page.`);
+      await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to access Role Edit page.`);
 
       return res.status(403).render('unauthorized', {
         title: 'Unauthorized'
@@ -1579,7 +1576,7 @@ async function getRoleDeletePage (req, res, next){
       const user = await User.get(username);
 
       if (user.status !== globals.ActiveStatus){
-        await createServerAudit(user._id, user.username,  `Inactive user ${user.username} tried to access Role Delete page.`);
+        await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to access Role Delete page.`);
         
         return res.render('unauthorized', {
           title: 'Unauthorized'
@@ -1698,7 +1695,6 @@ async function updateRole(req, res, next){
     // =====================================================================================================
     const permissionProps = [];
     permissionProps.push({ name: 'Warn', key: 'permWarn', value: parseInt(req.body.permWarn) });
-    permissionProps.push({ name: 'Eval', key: 'permEval', value: parseInt(req.body.permEval) });
     permissionProps.push({ name: 'Mute', key: 'permMute', value: parseInt(req.body.permMute) });
     permissionProps.push({ name: 'Unmute', key: 'permUnmute', value: parseInt(req.body.permUnmute) });
     permissionProps.push({ name: 'Kill', key: 'permKill', value: parseInt(req.body.permKill) });
@@ -1810,7 +1806,7 @@ async function updateRole(req, res, next){
     const isDev = isDeveloper(user.role);
 
     if (!isDev && user.status !== globals.ActiveStatus){
-      await createServerAudit(user._id, user.username,  `Inactive user ${user.username} tried to update role ${role.name}.`);
+      await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to update role ${role.name}.`);
 
       return res.status(403).json({
         success: false,
@@ -1875,7 +1871,7 @@ async function updateRole(req, res, next){
       }
     }
     else {
-      await createServerAudit(user._id, user.username, `User ${user.username} tried to update the role ${role.name}.`);
+      await createServerAudit(user._id, user.username, req.ip, `User ${user.username} tried to update the role ${role.name}.`);
 
       return res.status(403).json({
         success: false,
@@ -1992,7 +1988,6 @@ async function createRole(req, res, next){
     // =====================================================================================================
     const permissionProps = [];
     permissionProps.push({ name: 'Warn', key: 'permWarn', value: parseInt(req.body.permWarn) });
-    permissionProps.push({ name: 'Eval', key: 'permEval', value: parseInt(req.body.permEval) });
     permissionProps.push({ name: 'Mute', key: 'permMute', value: parseInt(req.body.permMute) });
     permissionProps.push({ name: 'Unmute', key: 'permUnmute', value: parseInt(req.body.permUnmute) });
     permissionProps.push({ name: 'Kill', key: 'permKill', value: parseInt(req.body.permKill) });
@@ -2044,7 +2039,7 @@ async function createRole(req, res, next){
     const isDev = isDeveloper(user.role);
 
     if (!isDev && user.status !== globals.ActiveStatus){
-      await createServerAudit(user._id, user.username,  `Inactive user ${user.username} tried to create role ${roleProps.name}.`);
+      await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to create role ${roleProps.name}.`);
 
       return res.status(403).json({
         success: false,
@@ -2107,7 +2102,7 @@ async function createRole(req, res, next){
       }
     }
     else {
-      await createServerAudit(user._id, user.username, `User ${user.username} tried to create the role ${roleProps.name}.`);
+      await createServerAudit(user._id, user.username, req.ip, `User ${user.username} tried to create the role ${roleProps.name}.`);
 
       return res.status(403).json({
         success: false,
@@ -2143,7 +2138,7 @@ async function deleteRole(req, res, next){
       const user = await User.get(username);
 
       if (user.status !== globals.ActiveStatus){
-        await createServerAudit(user._id, user.username, `Inactive user ${user.username} tried to delete role ${role.name}.`);
+        await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to delete role ${role.name}.`);
         return res.status(403).render('unauthorized', { title: 'Unauthorized' });
       }
             
@@ -2156,7 +2151,7 @@ async function deleteRole(req, res, next){
       );
 
       if (!canDeleteRole) {
-        await createServerAudit(user._id, user.username, `Unauthorized user ${user.username} tried to delete the role ${role.name}.`);
+        await createServerAudit(user._id, user.username, req.ip, `Unauthorized user ${user.username} tried to delete the role ${role.name}.`);
 
         return res.status(403).json({
           success: false,
@@ -2265,7 +2260,7 @@ function getRoleValueFromName (roleName){
 
   if (foundRole){
     roleValue = foundRole.value;
-  }  
+  }
 
   return roleValue;
 }
@@ -2371,7 +2366,7 @@ async function getSettingsEditPage (req, res, next){
       const user = await User.get(username);
 
       if (user.status !== globals.ActiveStatus){
-        await createServerAudit(user._id, user.username, `Inactive user ${user.username} tried to access Settings Edit page.`);
+        await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to access Settings Edit page.`);
 
         return res.status(403).render('unauthorized', {
           title: 'Unauthorized'
@@ -2438,7 +2433,7 @@ async function updateSettings (req, res, next){
     const user = await User.get(username);
 
     if (user.status !== globals.ActiveStatus){
-      await createServerAudit(user._id, user.username, `Inactive user ${user.username} tried to update tank ${member.username}.`);
+      await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to update tank ${member.username}.`);
 
       return res.status(403).json({
         success: false,
@@ -2605,7 +2600,7 @@ async function getServerAuditPage (req, res, next){
   
   const userRoleValue = getRoleValueFromName(user.role);  
 
-  res.render('audit-server', {
+  res.render('server-audit', {
     title: 'Server Audit Log',
     // Currently authenticated user.
     user: user,
@@ -2868,7 +2863,7 @@ async function getMemberEditPage (req, res, next){
       const user = await User.get(username);
 
       if (user.status !== globals.ActiveStatus){
-        await createServerAudit(user._id, user.username, `Inactive user ${user.username} tried to access Member Edit page.`);
+        await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to access Member Edit page.`);
 
         res.status(403);
         res.render('unauthorized', {
@@ -2943,7 +2938,7 @@ async function getMemberEditPage (req, res, next){
   }
   catch (err){
     await logger.error(err);
-console.log(err);
+
     res.render('500', {
       title: 'Internal Server Error'
     });
@@ -2960,7 +2955,7 @@ async function getMemberDeletePage (req, res, next){
       const user = await User.get(username);
 
       if (user.status !== globals.ActiveStatus){
-        await createServerAudit(user._id, user.username,  `Inactive user ${user.username} tried to access Member Delete page.`);
+        await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to access Member Delete page.`);
 
         res.status(403);
         res.render('unauthorized', {
@@ -3048,8 +3043,8 @@ async function updateMember(req, res, next){
       }
       req.body.suspendedReason = utils.sanitizeHTML(req.body.suspendedReason);
 
-      if (req.body.suspendedReason.length <config.minSuspendedReasonLength ){
-        return res.status(400).json(createValidationMessage('suspendedReason', `Suspended Reason must be at least ${config.minSuspendedReasonLength} characters long.`));
+      if (req.body.suspendedReason.length < 20){
+        return res.status(400).json(createValidationMessage('suspendedReason', 'Suspended Reason must be at least 20 characters long.'));
       }
     }
     // =====================================================================================================            
@@ -3085,7 +3080,7 @@ async function updateMember(req, res, next){
       const user = await User.get(username);
 
       if (user.status !== globals.ActiveStatus){
-        await createServerAudit(user._id, user.username, `Inactive user ${user.username} tried to update member ${member.username}.`);
+        await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to update member ${member.username}.`);
 
         res.status(403);
         res.json({
@@ -3284,7 +3279,7 @@ async function updateMember(req, res, next){
             // If a user is going to be suspended, blacklist that user's JWT token as well to log the user out.
             if (change.status === globals.SuspendedStatus){
               globals.BlacklistedTokens.push(member.jwtToken);
-              
+
               change.suspendedReason = req.body.suspendedReason;
             }
           }          
@@ -3352,7 +3347,7 @@ async function updateMember(req, res, next){
         }
       }
       else {
-        await createServerAudit(user._id, user.username,  `User ${user.username} tried to update the member ${member.username}.`);
+        await createServerAudit(user._id, user.username, `User ${user.username} tried to update the member ${member.username}.`);
 
         return res.status(403).json({
             success: false,
@@ -3391,7 +3386,7 @@ async function deleteMember(req, res, next){
       const user = await User.get(username);
 
       if (user.status !== globals.ActiveStatus){
-        await createServerAudit(user._id, user.username, `Inactive user ${user.username} tried to delete member ${member.username}.`);
+        await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to delete member ${member.username}.`);
 
         res.status(403);
         res.render('unauthorized', {
@@ -3401,7 +3396,7 @@ async function deleteMember(req, res, next){
       }
 
       if (user.id === member.id){
-        await createServerAudit(user._id, user.username,  `User ${user.username} tried to delete his/her own account.`);
+        await createServerAudit(user._id, user.username, req.ip, `User ${user.username} tried to delete his/her own account.`);
 
         res.status(403);
         res.json({
@@ -3415,7 +3410,7 @@ async function deleteMember(req, res, next){
       const minRoleValueToDeleteMember = getRoleValueFromName(globals.Settings.minRoleToDeleteMember) || globals.MaxRoleValue;
 
       if (userRole.value < minRoleValueToDeleteMember) {
-        await createServerAudit(user._id, user.username,  `Unauthorized user ${user.username} tried to delete the member ${member.username}.`);
+        await createServerAudit(user._id, user.username, req.ip, `Unauthorized user ${user.username} tried to delete the member ${member.username}.`);
 
         res.status(403);
         res.json({
@@ -3513,7 +3508,7 @@ async function registerMember(req, res, next) {
     }
         
     req.body.role = globals.DefaultRoleName || 'Member';
-        console.log('[error find test1]')
+        
     // =====================================================================================================
     // Check required fields.
     // =====================================================================================================
@@ -3627,7 +3622,6 @@ async function registerMember(req, res, next) {
     const { _id } = user;    
     // =====================================================================================
     // Audit trail.
-    console.log('[registration]: succesfuly registered a new member');
     const action = `User ${user.username} registered.`;
     await createServerAudit(user._id, user.username, action);
     // =====================================================================================
@@ -3693,7 +3687,7 @@ async function recordMapUsage(req, res, next) {
     
     if (updatedMaze){
       return res.status(200).json({
-       success: true,
+        success: true,
         message: 'Map usage recorded.'        
       });
     }
@@ -3749,9 +3743,10 @@ async function authenticateGamer(req, res, next) {
         
     // Try to retrieve the user based on username.
     const user = await User.get(req.body.username);
-   if (!user){      
-      return res.status(200).json({
-        success: 'failed',
+
+    if (!user){      
+      return res.status(401).json({
+        success: true,
         message: 'Authentication failed.'
       });      
     }
@@ -3760,18 +3755,30 @@ async function authenticateGamer(req, res, next) {
     const passwordMatched = req.body.passwordHash.toUpperCase() === user.passwordHash.toUpperCase();
 
     if (!passwordMatched){      
-      return res.status(200).json({
-        succes: 'failed',
+      return res.status(401).json({
+        success: true,
         message: 'Authentication failed.'
       });      
     }
-  
-   
-    // Check the status, extra security layer
+  if (user.status === globals.SuspendedStatus){
+    const data = {
+      succes: false,
+       message: `Your account is suspended by ${user.lastUpdatedBy}`
+      } 
+    }
+      else if (user.status === globals.InactiveStatus){
+        const data = {
+          succes: false,
+        message: 'Please ask a staff member to activate your account first.'
+        }
+      }
+    
+    // Check the status, extra security layer.
     if (user.status === globals.ActiveStatus){
       const roleValue = getRoleValueFromName(user.role);
       const roleColor = getRoleColorFromName(user.role);
       let modifiedUsername = user.username;
+      
       const data = {
         success: true,
         message: '*** Authentication successful. ***',
@@ -3787,9 +3794,6 @@ async function authenticateGamer(req, res, next) {
 
       if (foundRole){
         data.maxWarn = foundRole.permWarn;
-        if (foundRole == 'Developer') {
-        data.maxEval = 100;
-        } else {data.maxEval = 0;};
         data.maxMute = foundRole.permMute;
         data.maxUnmute = foundRole.permUnmute;
         data.maxKill = foundRole.permKill;        
@@ -3812,26 +3816,22 @@ async function authenticateGamer(req, res, next) {
       console.log(`Sending user data for ${modifiedUsername}`);      
       
       res.status(200).json(data);
-    } else 
-    {
+    }
+    else {
       let msg = null;
-          // Last updated by.
-      const updatedBy = await User.getById(user.lastUpdatedBy);
-      if (updatedBy){
-        user.lastUpdatedByUsername = updatedBy.username;
-      }
+
       if (user.status === globals.SuspendedStatus){
-        msg = `Account suspended by ${user.lastUpdatedByUsername}`;
+        msg = `Your account is suspended by ${user.lastUpdatedBy}`;
       }
       else if (user.status === globals.InactiveStatus){
         msg = 'Please ask a staff member to activate your account first.';
       }
 
-      res.status(200).json({
+      res.status(403).json({
         success: false,
         message: msg
       });
-    }  
+    }
   }
   catch (err){
     await logger.error(err);
@@ -3911,7 +3911,7 @@ async function getMapCreatePage (req, res, next){
   }
 
   if (user.status !== globals.ActiveStatus){
-    await createServerAudit(user._id, user.username,  `Inactive user ${user.username} tried to access Create Map page.`);
+    await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to access Create Map page.`);
 
     res.render('unauthorized', {
       title: 'Unauthorized'
@@ -4127,7 +4127,7 @@ async function getMapEditPage (req, res, next){
 
     const user = await User.get(username);
     if (user.status !== globals.ActiveStatus){
-      await createServerAudit(user._id, user.username,  `Inactive user ${user.username} tried to access Map Edit page.`);
+      await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to access Map Edit page.`);
 
       return res.status(403).render('unauthorized', {
         title: 'Unauthorized'
@@ -4188,7 +4188,7 @@ async function getMapDeletePage (req, res, next){
       const user = await User.get(username);
 
       if (user.status !== globals.ActiveStatus){
-        await createServerAudit(user._id, user.username,  `Inactive user ${user.username} tried to access Map Delete page.`);
+        await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to access Map Delete page.`);
 
         res.status(403);
         res.render('unauthorized', {
@@ -4562,7 +4562,7 @@ async function deleteMap(req, res, next){
     }
 
     if (user.status !== globals.ActiveStatus){
-      await createServerAudit(user._id, user.username, `Inactive user ${user.username} tried to delete map ${maze.name}.`);
+      await createServerAudit(user._id, user.username, req.ip, `Inactive user ${user.username} tried to delete map ${maze.name}.`);
       return res.status(403).render('unauthorized', { title: 'Unauthorized' });
     }
 
@@ -4574,7 +4574,7 @@ async function deleteMap(req, res, next){
                             userRoleValue >= minRoleValueToDeleteMember;
 
     if (!canDeleteMap) {
-      await createServerAudit(user._id, user.username,  `Unauthorized user ${user.username} tried to delete the map ${maze.name}.`);
+      await createServerAudit(user._id, user.username, req.ip, `Unauthorized user ${user.username} tried to delete the map ${maze.name}.`);
 
       return res.status(403).json({
         success: false,
