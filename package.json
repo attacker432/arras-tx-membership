@@ -4,7 +4,7 @@
   "description": "",
   "main": "01-express-basics.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js && bash console-setup.sh"
   },
   "keywords": [],
   "author": "",
