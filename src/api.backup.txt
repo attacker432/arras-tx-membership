@@ -3043,7 +3043,7 @@ async function updateMember(req, res, next){
       }
       req.body.suspendedReason = utils.sanitizeHTML(req.body.suspendedReason);
 
-      if (req.body.suspendedReason.length < 20){
+      if (req.body.suspendedReason.length < 60){
         return res.status(400).json(createValidationMessage('suspendedReason', 'Suspended Reason must be at least 20 characters long.'));
       }
     }

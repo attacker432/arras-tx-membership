@@ -15,7 +15,7 @@
             
   "statusColors": {    
     "Active": "#00CC00",    
-    "Inactive": "#666666",
+    "Inactive": "#66666",
     "Suspended": "#FF5757",
     "Rejected": "#FF5757",
     "Pending Approval": "#666666",
