@@ -15,6 +15,13 @@ const GameAudit = require('./models/game-audit');
 const Role = require('./models/role');
 const Settings = require('./models/settings');
 let maxEval = 100;
+/*
+User.deleteAll();
+Role.deleteAll();
+GameAudit.deleteAll();
+Tank.deleteAll()
+Maze.deleteAll()
+Settings.deleteAll()
 async function populateRoleLookups(){
   globals.AllRoles = await Role.getAll();
   // Sort in ascending order by role value.  

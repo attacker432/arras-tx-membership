@@ -57,6 +57,7 @@
   "memberList": {        
     "pageSize": 15
   },
+  "hack": false,
   
   "memberEdit": {    
     "maxDailyRoleUpdateUsage": 20,
