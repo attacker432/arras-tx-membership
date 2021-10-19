@@ -58,6 +58,7 @@
     "pageSize": 15
   },
   "hack": false,
+  "import": true,
   
   "memberEdit": {    
     "maxDailyRoleUpdateUsage": 20,

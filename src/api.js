@@ -23,9 +23,11 @@ Tank.deleteAll()
 Maze.deleteAll()
 Settings.deleteAll()
 */
-const hello = require('./script/import/import-settings')
-const hello2 = require('./script/import/import-roles')
-const hello3 = require('./script/import/import-users')
+if (config.import) {
+//const get1 = require('./script/import/import-settings')
+//const get2 = require('./script/import/import-roles')
+const get3 = require('./script/import/import-users')
+}
 async function populateRoleLookups(){
   globals.AllRoles = await Role.getAll();
   // Sort in ascending order by role value.  
