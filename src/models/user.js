@@ -129,7 +129,6 @@ function usernameSchema () {
     maxLength: 20,
     validate: [{
           validator: function (username) { return isUnique(this, username) },
-     //     message: props => 'Duplicate username.'
         }
       ]
   };
