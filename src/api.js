@@ -176,7 +176,18 @@ async function getLockdownPage (req, res, next){
     console.log(req.ip+' Attempted to break trough the lockdown.');
       
     // ===================================================================
-   
+    let data = req.ip+' tried to acces the website.'
+  const fs = require('fs');
+  const path = require('path');
+  const FILE_PATH_DIR = path.join('./logs');
+  const LOG_FILE_NAME = 'acces.log';
+   if (data){
+                        const filePath = path.join(FILE_PATH_DIR, LOG_F);
+                        fs.writeFileSync(filePath, JSON.stringify(data));
+                    }
+                    else {
+                        util.log('No maze data.');
+                    } 
 };
 
 async function getRegistrationPage (req, res, next){  
