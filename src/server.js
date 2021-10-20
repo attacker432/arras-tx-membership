@@ -11,6 +11,7 @@ const auth = require('./auth');
 const middleware = require('./middleware');
 const logger = require('./logger');
 const http = require('http');
+const config = require('../config.json');
 const https = require('https');
 const fs = require('fs');
 const app = express();
@@ -64,9 +65,8 @@ app.use(cookieParser());
 // ===================================================================
   const expressip = require('express-ip');
 app.use(expressip().getIpInfoMiddleware);
+  if (config.lockdown === false) {
 app.get('/', auth.ensureGuest, api.getLoginPage, function (req, res) {
-    res.send(req.ipInfo);
-  console.log(req.ipInfo);
 } );
 app.get('/login', api.getLoginPage);
 app.post('/login', createRateLimiter(20), auth.authenticate);
@@ -92,7 +92,9 @@ app.get('/register', api.getRegistrationPage);
 app.post('/register', createRateLimiter(1), api.registerMember);
 
 app.get('/register/confirm/:id', api.getRegistrationConfirmationPage);
-
+ } else {
+  app.get('/lockdown', api.getLockdownPage);// get the page.
+  };
 app.get('/tank/submit', api.getSubmitTankPage);
 app.post('/tank/submit', createRateLimiter(20), api.submitTank);
 
@@ -147,7 +149,7 @@ app.get('/map/edit/:id', auth.ensureMember, api.getMapEditPage);
 app.post('/map/edit', auth.ensureMember, api.updateMap);
 app.get('/map/delete/:id', auth.ensureMember, api.getMapDeletePage);
 app.post('/map/delete', auth.ensureMember, api.deleteMap);
-
+ 
 // No authentication needed as it is consumed externally (token needed for POST method).
 app.post('/map/download', createRateLimiter(30), api.sendMapData);
 app.post('/map/recordusage', createRateLimiter(30), api.recordMapUsage);

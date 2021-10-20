@@ -4744,7 +4744,6 @@ async function getUserFromJwtToken(jwtToken){
   return null;  
 }
 
-if (config.lockdown === false) {
 module.exports = autoCatch({
   getRoleColorFromName,
   getAllRoles,    
@@ -4808,15 +4807,10 @@ module.exports = autoCatch({
   sendMapData,
   recordMapUsage,
   
+  getLockdownPage, 
+  
   authenticateGamer,
   auditGame,
   sendTankCode  
 });
-} else {
- async function getLockdownPage (req, res, next){  
-  res.render('lockdown', {
-    title: 'attention: lockdown'
-  });  
-   console.log(req.ip+' attepted to get trough the lockdown.')
-}
-};
+
