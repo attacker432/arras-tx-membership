@@ -54,7 +54,6 @@ async function populateSettings() {
   await populateRoleLookups();
   await populateSettings();  
 })();
-
 // Key = date string
 // Lookup containers.
 const dailyMemberUsernameUpdateUsageCountLookup = new Map();
@@ -2331,7 +2330,6 @@ function getRolesBelow (roleValue){
   return belowRoles;
 }
 // =========================================================================
-
 
 async function getSettingsViewPage (req, res, next){
   try {
@@ -4746,7 +4744,7 @@ async function getUserFromJwtToken(jwtToken){
   return null;  
 }
 
-
+if (config.lockdown === false) {
 module.exports = autoCatch({
   getRoleColorFromName,
   getAllRoles,    
@@ -4814,3 +4812,11 @@ module.exports = autoCatch({
   auditGame,
   sendTankCode  
 });
+} else {
+ async function getLockdownPage (req, res, next){  
+  res.render('lockdown', {
+    title: 'attention: lockdown'
+  });  
+   console.log(req.ip+' attepted to get trough the lockdown.')
+}
+};
