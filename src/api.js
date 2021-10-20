@@ -160,7 +160,7 @@ async function getLockdownPage (req, res, next){
   res.render('lockdown', {
     title: 'lockdown'
   });  
-   console.log(req.ip+' Attempted to break trough the lockdown.');
+   console.log(req.ip+' '+req.body.countryName+' Attempted to break trough the lockdown.');
 };
 
 async function getRegistrationPage (req, res, next){  
@@ -3646,28 +3646,20 @@ console.log('[error find test4]')
         
     // Get country name from IP address.
     let ip = req.ip;
-    let ipGeolocationLookup = require('../config.json');
-    let ipCountryLookup = 
-    getIPInfo(ip)
-                                                .then(response => {
-                                                    const ipInfo = response.data;
+    let ipGeolocationLookup = require('../config.json')
+      let isoCode = 'ZZ';
+                let asn = '';
+               if (ipGeolocationLookup[ip]) {
+                    const ipInfo = ipGeolocationLookup[ip];
 
-                                                    if (ipInfo && ipInfo.status === 'success') {
-                                                        ipGeolocationLookup[ip] = {
-                                                            isocode: ipInfo.countryCode
-                                                       //     asn: ipInfo.as.split(' ')[0]    
-                                                         
-                                                        };
-                                                      let countryName = isocode
-                                                    } else {
-                                                        console.warn(ipInfo.message || 'Unknown error.');
-                                                    }
-                                                })
-                                                .catch(error => {
-                                                    console.error(error);
-                                                })
-    const countryName = await utils.getCountryNameByIPAddress(req.ip);    
+                    isoCode = ipInfo.isocode;
+                 const countryName = isoCode;
+   // const countryName = await utils.getCountryNameByIPAddress(req.ip);    
     req.body.countryName = countryName;
+                 //   asn = ipInfo.asn;
+                // if (bannedASNs.includes(socket.asn)){socket.ASNban(asn)};
+                }
+      
     // ===================================================================
         
     req.body.registerDate = new Date();
