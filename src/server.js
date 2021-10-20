@@ -66,8 +66,7 @@ app.use(cookieParser());
   const expressip = require('express-ip');
 app.use(expressip().getIpInfoMiddleware);
   if (config.lockdown === false) {
-app.get('/', auth.ensureGuest, api.getLoginPage, function (req, res) {
-} );
+app.get('/', auth.ensureGuest, api.getLoginPage);
 app.get('/login', api.getLoginPage);
 app.post('/login', createRateLimiter(20), auth.authenticate);
 
@@ -94,6 +93,10 @@ app.post('/register', createRateLimiter(1), api.registerMember);
 app.get('/register/confirm/:id', api.getRegistrationConfirmationPage);
  } else {
   app.get('/lockdown', api.getLockdownPage);// get the page.
+  app.get('/', api.getLockdownPage);//other get page try.
+  app.get('/login', api.getLockdownPage);//if they put "/login" after the link, still redirect.
+  app.get('/logout', api.getLockdownPage);//if they put "/logout" after the link, still redirect.
+  app.get('/register', api.getLockdownPage);//if they put "/login" after the link, still redirect.
   };
 app.get('/tank/submit', api.getSubmitTankPage);
 app.post('/tank/submit', createRateLimiter(20), api.submitTank);
@@ -162,6 +165,7 @@ app.get('/gifs/*', (req, res) => {
 app.use(middleware.handleValidationError);
 app.use(middleware.handleError);
 app.use(middleware.notFound);
+app.use(middleware.lockdown);//lockdown page.
 // ==================================================================
 let httpServer = null;
 

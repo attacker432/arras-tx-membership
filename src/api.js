@@ -150,7 +150,12 @@ async function getLoginPage (req, res, next){
     title: 'Member Log In'    
   });  
 }
-
+async function getLockdownPage (req, res, next){  
+  res.render('lockdown', {
+    title: 'lockdown'
+  });  
+   console.log(req.ip+' Attempted to break trough the lockdown.');
+};
 
 async function getRegistrationPage (req, res, next){  
   try {

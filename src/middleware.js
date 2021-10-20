@@ -32,6 +32,11 @@ function notFound (req, res) {
     title: 'Page Not Found',
   });
 }
+function lockdown (req, res) {  
+  res.render('lockdown', {
+    title: 'lockdown',
+  });
+}
 
 function handleValidationError (err, req, res, next) {
   if (err.name !== 'ValidationError') return next(err);
@@ -42,6 +47,7 @@ function handleValidationError (err, req, res, next) {
 module.exports = {
   cors,
   notFound,
+  lockdown,
   handleError,
   handleValidationError
 }
