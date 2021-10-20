@@ -3663,7 +3663,7 @@ console.log('[error find test4]')
     // Get country name from IP address.
     let ip = req.ip
       let isoCode = 'ZZ';
-                let asn = '';
+              //  let asn = '';
                if (ipGeolocationLookup[ip]) {
                     const ipInfo = ipGeolocationLookup[ip];
 
