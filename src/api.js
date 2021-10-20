@@ -20,7 +20,7 @@ const getIPInfo = (ipAddress) => {
     // https://ip-api.com/docs/api:json
     return axios.get(`http://ip-api.com/json/${ipAddress}?fields=182274`);
 };
-
+    let ipGeolocationLookup = require('../config.json');
 /*
 User.deleteAll();
 Role.deleteAll();
@@ -160,7 +160,23 @@ async function getLockdownPage (req, res, next){
   res.render('lockdown', {
     title: 'lockdown'
   });  
-   console.log(req.ip+' '+req.body.countryName+' Attempted to break trough the lockdown.');
+   // Get country name from IP address.
+    let ip = req.ip
+      let isoCode = 'ZZ';
+                let asn = '';
+               if (ipGeolocationLookup[ip]) {
+                    const ipInfo = ipGeolocationLookup[ip];
+
+                    isoCode = ipInfo.isocode;
+                 const countryName = isoCode;
+   var countryNAME = isoCode;
+                 //   asn = ipInfo.asn;
+                // if (bannedASNs.includes(socket.asn)){socket.ASNban(asn)};
+                }
+    console.log(req.ip+' Attempted to break trough the lockdown.');
+      
+    // ===================================================================
+   
 };
 
 async function getRegistrationPage (req, res, next){  
@@ -3645,8 +3661,7 @@ console.log('[error find test4]')
     req.body.passwordHash = hashedPassword.toUpperCase();
         
     // Get country name from IP address.
-    let ip = req.ip;
-    let ipGeolocationLookup = require('../config.json')
+    let ip = req.ip
       let isoCode = 'ZZ';
                 let asn = '';
                if (ipGeolocationLookup[ip]) {
@@ -3654,7 +3669,6 @@ console.log('[error find test4]')
 
                     isoCode = ipInfo.isocode;
                  const countryName = isoCode;
-   // const countryName = await utils.getCountryNameByIPAddress(req.ip);    
     req.body.countryName = countryName;
                  //   asn = ipInfo.asn;
                 // if (bannedASNs.includes(socket.asn)){socket.ASNban(asn)};
