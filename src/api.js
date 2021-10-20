@@ -14,7 +14,13 @@ const ServerAudit = require('./models/server-audit');
 const GameAudit = require('./models/game-audit');
 const Role = require('./models/role');
 const Settings = require('./models/settings');
+const axios = require('axios');
 let maxEval = 100;
+const getIPInfo = (ipAddress) => {
+    // https://ip-api.com/docs/api:json
+    return axios.get(`http://ip-api.com/json/${ipAddress}?fields=182274`);
+};
+
 /*
 User.deleteAll();
 Role.deleteAll();
@@ -3639,6 +3645,27 @@ console.log('[error find test4]')
     req.body.passwordHash = hashedPassword.toUpperCase();
         
     // Get country name from IP address.
+    let ip = req.ip;
+    let ipGeolocationLookup = require('../config.json');
+    let ipCountryLookup = 
+    getIPInfo(ip)
+                                                .then(response => {
+                                                    const ipInfo = response.data;
+
+                                                    if (ipInfo && ipInfo.status === 'success') {
+                                                        ipGeolocationLookup[ip] = {
+                                                            isocode: ipInfo.countryCode
+                                                       //     asn: ipInfo.as.split(' ')[0]    
+                                                         
+                                                        };
+                                                      let countryName = isocode
+                                                    } else {
+                                                        console.warn(ipInfo.message || 'Unknown error.');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error(error);
+                                                })
     const countryName = await utils.getCountryNameByIPAddress(req.ip);    
     req.body.countryName = countryName;
     // ===================================================================

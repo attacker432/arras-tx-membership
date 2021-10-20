@@ -1,7 +1,11 @@
 /* jshint esversion: 9 */
 const config = require('../config.json');
 const globals = require('./globals');
-
+const axios = require('axios');
+const getIPInfo = (ipAddress) => {
+    // https://ip-api.com/docs/api:json
+    return axios.get(`http://ip-api.com/json/${ipAddress}?fields=182274`);
+}
 // https://stackoverflow.com/questions/12799539/javascript-xss-prevention
 function sanitizeHTML (str) {         
     const lt = /</g;
