@@ -176,20 +176,30 @@ async function getLockdownPage (req, res, next){
     console.log(req.ip+' Attempted to break trough the lockdown.');
       
     // ===================================================================
+  /*
+  // create logs including ips.
     let data = req.ip+' tried to acces the website.'
   const fs = require('fs');
   const path = require('path');
   const FILE_PATH_DIR = path.join('./logs');
   const LOG_FILE_NAME = 'acces.log';
    if (data){
-                        const filePath = path.join(FILE_PATH_DIR, LOG_F);
+                        const filePath = path.join(FILE_PATH_DIR, LOG_FILE_NAME);
                         fs.writeFileSync(filePath, JSON.stringify(data));
-                    }
-                    else {
-                        util.log('No maze data.');
-                    } 
+           }
+              else {
+                        console.log('No acces data.');
+             } */
+  // create a custom timestamp format for log statements
+const SimpleNodeLogger = require('simple-node-logger'),
+    logger = SimpleNodeLogger.createRollingFileLogger({
+        logDirectory: __dirname + '/../../../logs',
+        fileNamePattern:'arras-<DATE>.log',
+        dateFormat:'YYYY-MM-DD',
+        //level: 'info',
+        level: 'warn',
+    });
 };
-
 async function getRegistrationPage (req, res, next){  
   try {
     if (!globals.Settings.allowMemberRegistration){

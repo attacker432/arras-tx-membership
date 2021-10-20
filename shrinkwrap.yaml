@@ -29,6 +29,7 @@ dependencies:
   proxycheck-node.js: 2.0.0-a
   request: 2.88.2
   serve-favicon: 2.5.0
+  simple-node-logger: 21.8.12
   socket.io: 4.2.0
   ssh-spawner: 2.1.1
   ssh2: 1.4.0
@@ -3442,6 +3443,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==
+  /simple-node-logger/21.8.12:
+    dependencies:
+      lodash: 4.17.21
+      moment: 2.29.1
+    dev: false
+    resolution:
+      integrity: sha512-RPImnYDq3jdUjaTvYLghaF1n65Dd0LV8hdZtlT0X1NZBAkw+lx0ZJtFydcUyYKjg0Yxd27AW9IAIc3OLhTjBzA==
   /sliced/1.0.1:
     dev: false
     resolution:
@@ -4127,6 +4135,7 @@ specifiers:
   proxycheck-node.js: ^2.0.0-a
   request: ^2.88.0
   serve-favicon: ^2.5.0
+  simple-node-logger: ^21.8.12
   socket.io: ^4.0.1
   ssh-spawner: ^2.1.1
   ssh2: ^1.4.0
