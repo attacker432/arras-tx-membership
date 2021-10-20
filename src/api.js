@@ -4078,8 +4078,6 @@ async function searchMaps(req, res, next){
   }
 }
 
-
-
 async function getMapViewPage (req, res, next){
   try {
     const jwtString = req.headers.authorization || req.cookies.jwt;
