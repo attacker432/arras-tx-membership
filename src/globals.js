@@ -80,7 +80,7 @@ module.exports = {
     BlacklistedTokens: [],
     
     AllRoles: [],
-
+    AllUsers: [],
     // Returns a role object given a role name.
     // Key = Role Name, Value = Role
     RoleFromNameLookup: {},   

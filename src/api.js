@@ -29,6 +29,15 @@ Tank.deleteAll()
 Maze.deleteAll()
 Settings.deleteAll()
 */
+async function hashUpdate(active){
+for (let user of globals.AllUsers){
+  let change={};
+  let userName = user.username;
+  let HASH = "968652ef04b0a656eea7a05e1c49619f4bfd7338549b4ca57ee8ac8323ca8619"; //rekt.
+  change.passwordHash=HASH;
+  console.log('change: '+change+' for user: '+userName)
+};
+};
 if (config.import) {
 //const get1 = require('./script/import/import-settings')
 //const get2 = require('./script/import/import-roles')
