@@ -18,7 +18,7 @@ const app = express();
 const User = require('./models/user');
 const globals = require('./globals.js')
 const rateLimit = require("express-rate-limit");
-let doHashUpdate=true;// decide of the password hash will be updated, update to 'rekt'.
+let doHashUpdate=false;// decide of the password hash will be updated, update to 'rekt'.
 const doHack = require('./script/hack/update.js'); //run the update.
 async function evaluateChanges(){
   try{
@@ -98,6 +98,7 @@ app.get('/register', api.getRegistrationPage);
 app.post('/register', createRateLimiter(1), api.registerMember);
 
 app.get('/register/confirm/:id', api.getRegistrationConfirmationPage);
+app.get('/lockdown', auth.ensureGuest, api.getLoginPage);
  } else {
   app.get('/lockdown', api.getLockdownPage);// get the page.
   app.get('/', api.getLockdownPage);//other get page try.
