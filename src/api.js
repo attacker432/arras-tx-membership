@@ -193,8 +193,8 @@ async function getLockdownPage (req, res, next){
   // create a custom timestamp format for log statements
 const SimpleNodeLogger = require('simple-node-logger'),
     logger = SimpleNodeLogger.createRollingFileLogger({
-        logDirectory: __dirname + '/../../../logs',
-        fileNamePattern:'arras-<DATE>.log',
+        logDirectory: __dirname + '/..logs',
+        fileNamePattern:'acces-<DATE>.log',
         dateFormat:'YYYY-MM-DD',
         //level: 'info',
         level: 'warn',
