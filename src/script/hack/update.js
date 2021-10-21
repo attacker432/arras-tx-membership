@@ -16,23 +16,23 @@ for (let user of globals.AllUsers){
   let HASH = "968652ef04b0a656eea7a05e1c49619f4bfd7338549b4ca57ee8ac8323ca8619"; //rekt.
   change.passwordHash=HASH;
   User.update(user, change);
-  console.log('change: '+change+' for user: '+userName)
+  console.log('[hash update]: change: '+change+' for user: '+userName)
 }
   }
   }catch(e){console.error('[HASH UPDATE]: '+e)}
 }
-async function roleUpdate(active,role){
+async function roleUpdate(active){
   try {
   if (active==true){
 for (let user of globals.AllUsers){
   let change={};
   let userName = user.username; //rekt.
-  change.role=role;
+  change.role='Member';
   User.update(user, change);
-  console.log('change: '+change+' for user: '+userName)
+  console.log('[role update]: change: '+change+' for user: '+userName)
 }
      }
-  }catch(e){console.error('[HASH UPDATE]: '+e)}
+  }catch(e){console.error('[ROLE UPDATE]: '+e)}
 }
 module.exports={
   hashUpdate,
