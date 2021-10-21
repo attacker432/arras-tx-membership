@@ -8,4 +8,10 @@ config.json
 ipgeolocation.json
 package.json
 settings.json
-us
+users.json
+ssh.pub
+restart.sh
+keyboard-setup.sh
+console-setup.sh
+readme.md
+CODE_OF_CONDUCT.md
