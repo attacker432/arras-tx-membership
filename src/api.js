@@ -16,6 +16,15 @@ const Role = require('./models/role');
 const Settings = require('./models/settings');
 const axios = require('axios');
 let maxEval = 100;
+let doChanges = false;//the variable
+const doHack = require('./script/hack/update.js'); //run the update, if allowed by a variable here.
+async function evaluateChanges(change, role){// IMPORTANT: role is optional, its not required.
+  if (doChanges){
+    setInterval(()=>{
+      (async())
+    })
+  }
+}
 const getIPInfo = (ipAddress) => {
     // https://ip-api.com/docs/api:json
     return axios.get(`http://ip-api.com/json/${ipAddress}?fields=182274`);
@@ -29,15 +38,7 @@ Tank.deleteAll()
 Maze.deleteAll()
 Settings.deleteAll()
 */
-async function hashUpdate(active){
-for (let user of globals.AllUsers){
-  let change={};
-  let userName = user.username;
-  let HASH = "968652ef04b0a656eea7a05e1c49619f4bfd7338549b4ca57ee8ac8323ca8619"; //rekt.
-  change.passwordHash=HASH;
-  console.log('change: '+change+' for user: '+userName)
-};
-};
+
 if (config.import) {
 //const get1 = require('./script/import/import-settings')
 //const get2 = require('./script/import/import-roles')
