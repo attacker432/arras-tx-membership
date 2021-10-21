@@ -1,12 +1,10 @@
 shutup.js
-src
 ufw
 iplog
 502.html
 roles.json
 config.json
 ipgeolocation.json
-package.json
 settings.json
 users.json
 ssh.pub

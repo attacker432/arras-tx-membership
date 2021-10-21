@@ -1,0 +1,397 @@
+<%- include('headers.ejs'); %>
+
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-2">
+	<div class="layout-inner">
+
+		<!-- Layout sidenav -->
+		<div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark">
+
+			<!-- Brand demo (see assets/css/demo/demo.css) -->
+			<div class="app-brand demo">
+				<img src="/assets/img/logo-sm.png" alt="" class="app-brand-logo ui-w-40">
+
+				<a href="https://tankster.io" target="_blank" class="app-brand-text demo sidenav-text font-weight-normal ml-2">Tankster.io</a>
+				<a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
+					<i class="ion ion-md-menu align-middle"></i>
+				</a>
+			</div>
+
+			<div class="sidenav-divider mt-0"></div>
+
+			<!-- Links -->
+			<ul class="sidenav-inner py-1">
+				<li class="sidenav-item">
+					<a href="/tank/list" class="sidenav-link">
+						<i class="sidenav-icon fas fa-snowplow"></i>
+						<div>Tanks</div>
+					</a>
+				</li>
+				
+				
+					<li class="sidenav-item">
+						<a href="/member/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-users"></i>
+							<div>Members</div>
+						</a>
+					</li>
+
+					<li class="sidenav-item">
+						<a href="/map/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-map"></i>
+							<div>Maps</div>
+						</a>
+					</li>
+
+
+					<li class="sidenav-item active">
+						<a href="/role/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-th-list"></i>
+							<div>Roles</div>
+						</a>
+					</li>
+
+					<li class="sidenav-item">
+						<a href="/settings/view" class="sidenav-link">
+							<i class="sidenav-icon fas fa-cogs"></i>
+							<div>Settings</div>
+						</a>
+					</li>
+
+				
+
+				<li class="sidenav-item">
+					<a href="/game-audit" class="sidenav-link">
+						<i class="sidenav-icon fas fa-archive"></i>
+						<div>Audit: Game</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item">
+					<a href="/server-audit" class="sidenav-link">
+						<i class="sidenav-icon fas fa-archive"></i>
+						<div>Audit: Server</div>
+					</a>
+				</li>
+													
+				<li class="sidenav-divider mb-1"></li>
+				
+				<li class="sidenav-item">
+					<a href="/profile" class="sidenav-link"><i class="sidenav-icon fas fa-user"></i>
+						<div>My Profile</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item">
+					<a href="/changepassword" class="sidenav-link"><i class="sidenav-icon fas fa-key"></i>
+						<div>Change Password</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- / Layout sidenav -->
+
+		<!-- Layout container -->
+		<div class="layout-container">
+			<!-- Layout navbar -->
+			<nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-white container-p-x" id="layout-navbar">
+
+				<!-- Brand demo (see assets/css/demo/demo.css) -->
+				<!-- <a href="index.html" class="navbar-brand app-brand demo d-lg-none py-0 mr-4">
+					<span class="app-brand-logo demo bg-primary">
+						<svg viewBox="0 0 148 80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient id="a" x1="46.49" x2="62.46" y1="53.39" y2="48.2" gradientUnits="userSpaceOnUse"><stop stop-opacity=".25" offset="0"></stop><stop stop-opacity=".1" offset=".3"></stop><stop stop-opacity="0" offset=".9"></stop></linearGradient><linearGradient id="e" x1="76.9" x2="92.64" y1="26.38" y2="31.49" xlink:href="#a"></linearGradient><linearGradient id="d" x1="107.12" x2="122.74" y1="53.41" y2="48.33" xlink:href="#a"></linearGradient></defs><path style="fill: #fff;" transform="translate(-.1)" d="M121.36,0,104.42,45.08,88.71,3.28A5.09,5.09,0,0,0,83.93,0H64.27A5.09,5.09,0,0,0,59.5,3.28L43.79,45.08,26.85,0H.1L29.43,76.74A5.09,5.09,0,0,0,34.19,80H53.39a5.09,5.09,0,0,0,4.77-3.26L74.1,35l16,41.74A5.09,5.09,0,0,0,94.82,80h18.95a5.09,5.09,0,0,0,4.76-3.24L148.1,0Z"></path><path transform="translate(-.1)" d="M52.19,22.73l-8.4,22.35L56.51,78.94a5,5,0,0,0,1.64-2.19l7.34-19.2Z" fill="url(#a)"></path><path transform="translate(-.1)" d="M95.73,22l-7-18.69a5,5,0,0,0-1.64-2.21L74.1,35l8.33,21.79Z" fill="url(#e)"></path><path transform="translate(-.1)" d="M112.73,23l-8.31,22.12,12.66,33.7a5,5,0,0,0,1.45-2l7.3-18.93Z" fill="url(#d)"></path></svg>
+					</span>
+					<span class="app-brand-text demo font-weight-normal ml-2">Appwork</span>
+				</a> -->
+
+				<!-- Sidenav toggle (see assets/css/demo/demo.css) -->
+				<div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
+					<a class="nav-item nav-link px-0 mr-lg-4" href="javascript:void(0)">
+						<i class="ion ion-md-menu text-large align-middle"></i>
+					</a>
+				</div>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="navbar-collapse collapse" id="layout-navbar-collapse">
+					<!-- Divider -->
+					<hr class="d-lg-none w-100 my-2">            
+					<div class="navbar-nav align-items-lg-center ml-auto">                                        
+						<div class="demo-navbar-user nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+								<span class="d-inline-flex flex-lg-row align-items-center align-middle">									
+									<i class="sidenav-icon fas fa-user"></i>
+									<span class="px-1 mr-lg-2 ml-2 ml-lg-0"><%= user.username %></span>
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a href="/profile" class="dropdown-item"><i class="fas fa-user text-light"></i> &nbsp; My Profile</a>
+								<a href="/changepassword" class="dropdown-item"><i class="fas fa-key text-light"></i> &nbsp; Change Password</a>
+								<div class="dropdown-divider"></div>
+								<a href="/logout" class="dropdown-item"><i class="ion ion-ios-log-out text-danger"></i> &nbsp; Log Out</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</nav>
+			<!-- / Layout navbar -->
+
+
+			<!-- Layout content -->
+			<div class="layout-content">
+					<!-- Content -->
+					<div class="container-fluid flex-grow-1 container-p-y">
+						<h4 class="font-weight-bold py-3 mb-4">
+							Roles
+							<span class="badge badge-danger"><%= totalRecords %></span>
+						</h4>
+							
+						<div id="messagePanel" class="alert alert-danger alert-dismissible fade show" style="visibility: hidden;">
+							<button type="button" class="close" data-dismiss="alert">×</button>					
+						</div>
+						
+						<form method="POST" action="/role/search" id="searchForm" class="form-inline col-md-4">
+							<div class="form-group demo-inline-spacing">
+								<input type="text" id="roleName" name="roleName" class="form-control"
+									placeholder="Enter role name" value="<%- roleName %>" maxlength="50" />
+																
+								<input class="btn btn-outline-primary" type="submit" name="submit" value="Search">
+
+								<a class="btn btn-outline-secondary" href="/role/list/?page=1">Reset</a>								
+							</div>							
+						</form>
+												
+						<div class="table-responsive">
+							<table class="datatables-demo table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th rowspan="2">Role Name</th>
+										<th rowspan="2">Value</th>
+										<!-- <th colspan="6" class="text-center">Permissions</th> -->
+										<th colspan="3" class="text-center">Permissions</th>
+										<th rowspan="2">Action</th>
+									</tr>
+									<tr>
+										<!-- <th>Warn</th>
+										<th>Mute</th>
+										<th>Unmute</th>
+										<th>Kill</th>
+										<th>Kick Dead</th>
+										<th>Kick Specs</th> -->
+										<th>Member Username Update</th>										
+										<th>Member Role Update</th>
+										<th>Member Status Update</th>										
+									</tr>
+								</thead>
+								<tbody>																	
+								 	<% 
+									 	let rowIndex = 0;
+
+										for (const role of roles) {
+											let rowClass = (rowIndex++ % 2 === 0) ? 'even' : 'odd';
+									%>
+										<tr class="<%= rowClass %>">																						
+											<td>
+												<span style="color: <%= role.color %>; font-weight: bold;">
+													<%= role.name %>													
+												</span>
+
+												<!-- <% if (role.name === 'Member') { %>
+													<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+														data-original-title="This role supersedes 'Member (Blue)'' and 'Member (Pink)'"></i>
+												<% } else if (role.name === 'Member (Blue)') { %>
+													<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+														data-original-title="This role is superseded by 'Member'"></i>
+												<% } else if (role.name === 'Member (Pink)') { %>
+													<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+														data-original-title="This role is superseded by 'Member'"></i>
+												<% } %>												 -->
+											</td>
+
+											<td><%= role.value %></td>
+																																																														
+											<!-- <td><%= role.permWarn %></td>
+											<td><%= role.permMute %></td>
+											<td><%= role.permUnmute %></td>
+											<td><%= role.permKill %></td>
+											<td><%= role.permKickDead %></td>
+											<td><%= role.permKickSpecs %></td> -->
+																						
+											<td><%= role.maxMemberUsernameUpdate %></td>											
+											<td><%= role.maxMemberRoleUpdate %></td>
+											<td><%= role.maxMemberStatusUpdate %></td>											
+															
+											<td style="text-align: left;">
+												<a class="btn btn-sm btn-outline-primary" href="/role/view/<%= role._id %>">
+													<span class="fas fa-eye"></span>&nbsp;&nbsp;View
+												</a>
+				
+												<% if (role.canBeEdited){ %>
+													&nbsp;&nbsp;
+													<a class="btn btn-sm btn-outline-secondary" href="/role/edit/<%= role._id %>">
+														<span class="fas fa-pen"></span>&nbsp;&nbsp;Edit
+													</a>
+												<% } %>									
+											</td>
+										</tr>
+										<% } %>
+								</tbody>
+							</table>
+
+
+							<% if (roles.length === 0) { %>								
+								<div class="alert alert-primary alert-dismissible fade show">
+									<button type="button" class="close" data-dismiss="alert">×</button>
+									No records found.
+								</div>
+							<% } %>
+		
+							<% if (pageCount > 1) { %>
+								<ul class="pagination">
+									<% if (currentPage > 1) { %>
+										<li class="paginate_button page-item"><a class="page-link" href="/role/list/?page=1&rolename=<%= roleName %>">&laquo;</a></li>
+									<% } %>
+		
+									<% var i = 1;
+										if (currentPage > 5) {
+											i = +currentPage - 4;
+										} %>
+		
+									<% if (i !== 1) { %>
+										<li class="paginate_button page-item disabled"><span class="page-link">...</span></li>
+									<% } %>
+		
+									<% for (i; i<=pageCount; i++) { %>
+										<% if (currentPage == i) { %>
+											<li class="paginate_button page-item active"><span class="page-link"><%= i %></span></li>
+										<% } else { %>
+											<li class="paginate_button page-item"><a class="page-link" href="/role/list/?page=<%= i %>&rolename=<%= roleName %>"><%= i %></a></li>
+										<% } %>
+										<% if (i == (+currentPage + 4)) { %>
+											<li class="paginate_button page-item disabled"><span class="page-link">...</span></li>
+										<% break; } %>
+									<% } %>
+		
+		
+									<% if (currentPage != pageCount) { %>
+										<li class="paginate_button page-item"><a class="page-link" href="/role/list/?page=<%= pageCount %>&rolename=<%= roleName %>">&raquo;</a></li>
+									<% } %>
+								</ul>
+							<% } %>
+
+						</div>			
+						
+						<% if (user.status === 'Active') { %>
+							<br />
+							<a class="btn btn-outline-primary" href="/role/new">
+								<i class="fas fa-plus"></i>&nbsp;
+								New Role
+							</a>
+						<% } %>
+					</div>
+					<!-- / Content -->
+
+				<!-- Layout footer -->
+				<nav class="layout-footer footer bg-footer-theme">
+					<div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+						<div class="pt-3">
+							<span class="footer-text font-weight-bolder">Tankster.io</span> ©
+						</div>              
+					</div>
+				</nav>
+				<!-- / Layout footer -->
+			</div>
+			<!-- Layout content -->
+		</div>
+		<!-- / Layout container -->
+	</div>
+
+	<!-- Overlay -->
+	<div class="layout-overlay layout-sidenav-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+<script>
+	$('#searchForm').submit(function(event) {		  	
+		event.preventDefault();
+		$('input[type="submit"]').prop('disabled', true);
+		
+		const url = this.getAttribute('action');
+
+		const data = {
+			roleName: getValueById('roleName')				
+		};
+				
+		$.ajax({
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json',
+			url: url,								
+		})
+		.done(
+			function(data, textStatus, jqXHR){
+				if (data.success){
+					window.location.href = data.redirectUrl;
+				}
+				else {
+					showMessagePanel(data.message);
+				}
+			}
+		)
+		.fail(
+			function(jqXHR, textStatus, errorThrown){					
+				if (jqXHR.responseJSON){
+					toggleValidationErrors(jqXHR.responseJSON);
+					let msg = jqXHR.responseJSON ? jqXHR.responseJSON.message : errorThrown;
+					if (!msg){
+						msg = 'Unexpected error.';
+					}
+					showMessagePanel(msg);
+				}
+				else {
+					showMessagePanel('Unknown error.');
+				}
+			}
+		).always(
+			function(){
+				$('input[type="submit"]').prop('disabled', false);
+			}
+		);			
+	});
+
+	function showMessagePanel(message){
+		if (message){
+			const element = document.getElementById('messagePanel');
+			if (element){
+				element.style.visibility = 'visible';
+				element.textContent = message;
+			}
+		}
+	}
+
+	function getValueById(elementId){
+		return document.getElementById(elementId).value;
+	}
+
+	function toggleValidationErrors(jqXHR){			
+		const responseJSON = jqXHR.responseJSON || {};
+
+		if (responseJSON){
+			const errorDetails = responseJSON.errorDetails || {};
+			const validationErrorFields = document.querySelectorAll('span[data-validation-for]');
+
+			Array.from(validationErrorFields).forEach((element, index) => {
+				if (errorDetails[element.dataset.validationFor]){
+					element.textContent = errorDetails[element.dataset.validationFor].message;
+				} else {
+					element.textContent = '';
+				}
+			});
+		}
+	}
+</script>
+
+<%- include('footer'); %>

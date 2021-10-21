@@ -1,0 +1,478 @@
+<%- include('headers.ejs'); %>
+
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-2">
+	<div class="layout-inner">
+
+		<!-- Layout sidenav -->
+		<div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark">
+
+			<!-- Brand demo (see assets/css/demo/demo.css) -->
+			<div class="app-brand demo">
+				<img src="/assets/img/logo-sm.png" alt="" class="app-brand-logo ui-w-40">
+
+				<a href="https://tankster.io" target="_blank" class="app-brand-text demo sidenav-text font-weight-normal ml-2">Tankster.io</a>
+				<a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
+					<i class="ion ion-md-menu align-middle"></i>
+				</a>
+			</div>
+			
+			<div class="sidenav-divider mt-0"></div>
+
+			<!-- Links -->
+			<ul class="sidenav-inner py-1">
+				<li class="sidenav-item">
+					<a href="/tank/list" class="sidenav-link">
+						<i class="sidenav-icon fas fa-snowplow"></i>
+						<div>Tanks</div>
+					</a>
+				</li>
+				
+				
+					<li class="sidenav-item">
+						<a href="/member/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-users"></i>
+							<div>Members</div>
+						</a>
+					</li>
+
+					<li class="sidenav-item">
+						<a href="/map/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-map"></i>
+							<div>Maps</div>
+						</a>
+					</li>
+
+				
+
+					<li class="sidenav-item active">
+						<a href="/role/list" class="sidenav-link">
+							<i class="sidenav-icon fas fa-th-list"></i>
+							<div>Roles</div>
+						</a>
+					</li>
+
+					<li class="sidenav-item">
+						<a href="/settings/view" class="sidenav-link">
+							<i class="sidenav-icon fas fa-cogs"></i>
+							<div>Settings</div>
+						</a>
+					</li>
+
+				
+				<li class="sidenav-item">
+					<a href="/game-audit" class="sidenav-link">
+						<i class="sidenav-icon fas fa-archive"></i>
+						<div>Audit: Game</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item">
+					<a href="/server-audit" class="sidenav-link">
+						<i class="sidenav-icon fas fa-archive"></i>
+						<div>Audit: Server</div>
+					</a>
+				</li>
+										
+				<li class="sidenav-divider mb-1"></li>
+				
+				<li class="sidenav-item">
+					<a href="/profile" class="sidenav-link"><i class="sidenav-icon fas fa-user"></i>
+						<div>My Profile</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item">
+					<a href="/changepassword" class="sidenav-link"><i class="sidenav-icon fas fa-key"></i>
+						<div>Change Password</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- / Layout sidenav -->
+
+		<!-- Layout container -->
+		<div class="layout-container">
+			<!-- Layout navbar -->
+			<nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-white container-p-x" id="layout-navbar">
+				
+				<!-- Sidenav toggle (see assets/css/demo/demo.css) -->
+				<div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
+					<a class="nav-item nav-link px-0 mr-lg-4" href="javascript:void(0)">
+						<i class="ion ion-md-menu text-large align-middle"></i>
+					</a>
+				</div>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="navbar-collapse collapse" id="layout-navbar-collapse">
+					<!-- Divider -->
+					<hr class="d-lg-none w-100 my-2">            
+					<div class="navbar-nav align-items-lg-center ml-auto">                                        
+						<div class="demo-navbar-user nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+								<span class="d-inline-flex flex-lg-row align-items-center align-middle">									
+									<i class="sidenav-icon fas fa-user"></i>
+									<span class="px-1 mr-lg-2 ml-2 ml-lg-0"><%= user.username %></span>
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a href="/profile" class="dropdown-item"><i class="fas fa-user text-light"></i> &nbsp; My Profile</a>
+								<a href="/changepassword" class="dropdown-item"><i class="fas fa-key text-light"></i> &nbsp; Change Password</a>
+								<div class="dropdown-divider"></div>
+								<a href="/logout" class="dropdown-item"><i class="ion ion-ios-log-out text-danger"></i> &nbsp; Log Out</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</nav>
+			<!-- / Layout navbar -->
+
+
+			<!-- Layout content -->
+			<div class="layout-content">
+					<!-- Content -->
+          <div class="container-fluid flex-grow-1 container-p-y">
+						<div id="messagePanel" class="alert alert-danger alert-dismissible fade show" 
+								role="alert" style="visibility: hidden;">
+							<button type="button" class="close" data-dismiss="alert">×</button>
+						</div>
+						
+            <div class="card mb-4">
+              <h6 class="card-header">
+                Role Details: Delete
+              </h6>
+              <div class="card-body">
+                <form action="/role/delete" method="POST" id="deleteForm">
+									<input type="hidden" id="_id" name="_id" value="<%= role._id %>" />
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">Name:</label>
+										<div class="col-sm-9">
+											<input type="text" value="<%= role.name %>" class="form-control"
+														style="color: <%= role.color %>; font-weight: bold;" readonly />
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Color:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="This color will be used for authenticated members in game."></i>
+										</label>
+										<div class="col-sm-9">											
+											<span class="minicolors-swatch minicolors-sprite minicolors-input-swatch" 
+													title="<%=role.color%>" style="margin-left:12px;">
+												<span class="minicolors-swatch-color" style="background-color:<%=role.color%>"></span>
+											</span>
+										</div>
+									</div>									
+
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Value:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="The higher the value, the more powerful the role is."></i>
+										</label>
+										<div class="col-sm-9">
+											<input type="text" value="<%= role.value %>" class="form-control" style="width: 200px;" readonly />
+										</div>
+									</div>
+																		                  
+									<br />
+                  <div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right">
+											Warn:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Warns a lower-ranked player by displaying a broadcast message. Select a player and type: '/warn reason'"></i>
+										</label>										
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permWarn %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Mute:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Mutes a lower-ranked player based on the IP address. Select a player and type: '/mute reason'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permMute %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+
+																	
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right">
+											Unmute:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Unmutes a player who was muted by the IP address. Select a player and type: '/unmute'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permUnmute %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Kill:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Kills a lower-ranked player. Select a player and type: '/kill reason'"></i>
+										</label>
+                    <div class="col-sm-3">
+											<input type="text" value="<%= role.permKill %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+
+								
+
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right">
+											Kick Dead:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Kicks lower-ranked dead players. Select 'All' and type: '/kickdead reason'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permKickDead %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+
+
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Kick Specs:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Kicks lower-ranked spectators. Select 'All' and type: '/kickspecs reason'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permKickSpecs %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+
+								
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right">
+											Kick:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Kicks a lower-ranked player from the game. Select a player and type: '/kick reason'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permKick %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+
+
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Broadcast:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Displays a broadcast message. Select 'All' and type: '/bc message'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permBroadcast %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+								
+
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right">
+											Food:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Enables or disables spawning food. To enable, select 'All' and type: '/food 1' or '/food on'. To disable, type: '/food 0' or '/food off'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permToggleFood %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Temp Ban:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Temporarily bans a lower-ranked player based on the IP address. Select a player and type: '/tempban reason'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permTempBan %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+
+								
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right">
+											ASN Ban:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Temporarily bans a lower-ranked player based on the ASN (Autonomous System Number). Multiple IP addresses will be affected, use as a last resort. Select a player and type: '/asnban reason'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permASNBan %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Clear Ban List (Unban All):
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="The command will be renamed to '/unbanall' in the future. Unbans all players who were banned by IP address and ASN. Select 'All' and type: '/clearbanlist'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permClearBanList %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+																	
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right">
+											ASN Mute:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Temporarily mutes a lower-ranked player based on the ASN (Autonomous System Number). Multiple IP addresses will be affected, use as a last resort. Select a player and type: '/asnmute reason'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permASNMute %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+
+
+										<label class="col-form-label col-sm-3 text-sm-right">
+											ASN Unmute:
+											<i class="fas fa-question-circle" data-toggle="tooltip" data-state="primary"
+												data-original-title="Unmutes a player who was muted by 'ASN Mute' previously. Select a player and type: '/asnunmute'"></i>
+										</label>
+                    <div class="col-sm-3">                      
+											<input type="text" value="<%= role.permASNUnmute %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+									<br />
+
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right">
+											Max Member Status Update:
+										</label>										
+                    <div class="col-sm-3">											
+											<input type="text" value="<%= role.maxMemberStatusUpdate %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Max Member Username Update:
+										</label>
+                    <div class="col-sm-3">											
+											<input type="text" value="<%= role.maxMemberUsernameUpdate %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+
+									<div class="form-group row">
+                    <label class="col-form-label col-sm-3 text-sm-right">
+											Max Member Password Hash Update:
+										</label>										
+                    <div class="col-sm-3">										
+											<input type="text" value="<%= role.maxMemberPasswordHashUpdate %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+
+
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Max Member Role Update:
+										</label>
+                    <div class="col-sm-3">											
+											<input type="text" value="<%= role.maxMemberRoleUpdate %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+
+									<div class="form-group row">                    										
+										<label class="col-form-label col-sm-3 text-sm-right">
+											Max Member Delete:
+										</label>										
+                    <div class="col-sm-3">											
+											<input type="text" value="<%= role.maxMemberDelete %>" class="form-control" style="width: 100px;" readonly />
+                    </div>
+                  </div>
+									<br />
+
+									  									
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3 text-sm-right"></label>
+										<div class="col-sm-9">
+											<% if (user.canDeleteRole){ %>												
+												<input type="submit" name="submit" class="btn btn-danger" value="Delete (This action cannot be undone)" />
+
+												&nbsp;
+												<a class="btn btn-outline-secondary" href="/role/view/<%= role._id %>">
+													Cancel
+												</a>
+											<% } %>
+										</div>
+									</div>
+									
+                </form>
+              </div>
+            </div>
+
+          </div>
+          <!-- / Content -->
+
+				<!-- Layout footer -->
+				<nav class="layout-footer footer bg-footer-theme">
+					<div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+						<div class="pt-3">
+							<span class="footer-text font-weight-bolder">Tankster.io</span> ©
+						</div>              
+					</div>
+				</nav>
+				<!-- / Layout footer -->
+			</div>
+			<!-- Layout content -->
+		</div>
+		<!-- / Layout container -->
+	</div>
+
+	<!-- Overlay -->
+	<div class="layout-overlay layout-sidenav-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+<script>
+	$('#deleteForm').submit(function(event) {
+		event.preventDefault();
+		$('input[type="submit"]').prop('disabled', true);
+
+		const url = this.getAttribute('action');
+
+		const data = {
+			_id: getValueById('_id')
+		};
+
+		$.ajax({
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json',
+			url: url,
+		})
+		.done(
+				function(data, textStatus, jqXHR){
+					if (data.success){
+						window.location.href = data.redirectUrl;
+					} else {
+						showMessagePanel(data.message);
+					}
+				}
+		)
+		.fail(
+				function(jqXHR, textStatus, errorThrown){
+					if (jqXHR.responseJSON){						
+						showMessagePanel(jqXHR.responseJSON.message);
+					} else {
+						if (textStatus === 'error'){
+							showMessagePanel('Unknown error.');
+						}
+					}
+				}
+		).always(
+			function(){
+				$('input[type="submit"]').prop('disabled', false);
+			}
+		);
+	});
+
+	function showMessagePanel(message){
+		const element = document.getElementById('messagePanel');
+		if (element){
+			element.style.visibility = 'visible';
+			element.textContent = message;
+		}
+	}
+
+	function getValueById(elementId){
+		return document.getElementById(elementId).value;
+	}	
+</script>
+
+<%- include('footer'); %>
