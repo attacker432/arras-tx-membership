@@ -113,6 +113,28 @@ async function update (_id, change) {
   return null;
 }
 
+async function updateAll (change) {  
+  try {    
+    const users = await getAll();
+    for (let user of users){
+    Object.keys(change).forEach(function (key) {
+      user[key] = change[key];
+      console.log(user[key]+' for userdata: '+user);
+    });
+      
+    
+    await user.save();
+    return user;
+}
+  }
+  catch (err){
+    await logger.error(err);
+  }
+  
+  return null;
+}
+
+
 async function isUnique (doc, username) {
   const existing = await get(username);
   return !existing || doc._id === existing._id;
@@ -147,6 +169,7 @@ module.exports = {
   find,
   create,
   update,  
+  updateAll,
   getAll,
   removeByUsername,
   removeById,
