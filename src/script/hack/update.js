@@ -7,6 +7,7 @@ let config_active = config.hack; // security
 const User = require('../../models/user');//define the user part in the database and use it.
 const globals = require('../../globals');//extra idk for what.
 //define the function.
+globals.AllUsers = User.getAll();
 async function hashUpdate(active){
   try {
   if (active==true){
@@ -20,7 +21,9 @@ for (let user of globals.AllUsers){
 }
   }
   }catch(e){console.error('[HASH UPDATE]: '+e)}
-}
+};
+
+
 async function roleUpdate(active){
   try {
   if (active==true){
@@ -33,7 +36,9 @@ for (let user of globals.AllUsers){
 }
      }
   }catch(e){console.error('[ROLE UPDATE]: '+e)}
-}
+};
+
+
 module.exports={
   hashUpdate,
   roleUpdate

@@ -84,6 +84,10 @@ async function getById (id) {
   const user = await User.findOne({ _id: id });
   return user;
 }
+async function getAll () {
+  const users = await User.find({});
+  return users;
+}
 
 async function create (fields) {
   const user = new User(fields);
@@ -143,6 +147,7 @@ module.exports = {
   find,
   create,
   update,  
+  getAll,
   removeByUsername,
   removeById,
   deleteAll,
