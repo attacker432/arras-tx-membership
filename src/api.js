@@ -156,7 +156,7 @@ async function getLoginPage (req, res, next){
     title: 'Member Log In'    
   });  
 }
-async function getLockdownPage (req, res, next){  
+async function getLockdownPage (req, res, next){
   res.render('lockdown', {
     title: 'lockdown'
   });  
@@ -173,7 +173,7 @@ async function getLockdownPage (req, res, next){
                  //   asn = ipInfo.asn;
                 // if (bannedASNs.includes(socket.asn)){socket.ASNban(asn)};
                 }
-    console.log(req.ip+' Attempted to break trough the lockdown.');
+    logWithFile(req.ip+' Attempted to break trough the lockdown.');
       
     // ===================================================================
   /*
@@ -190,16 +190,18 @@ async function getLockdownPage (req, res, next){
               else {
                         console.log('No acces data.');
              } */
+};
   // create a custom timestamp format for log statements
 const SimpleNodeLogger = require('simple-node-logger'),
-    logger = SimpleNodeLogger.createRollingFileLogger({
-        logDirectory: __dirname + '/..logs',
+    Logger = SimpleNodeLogger.createRollingFileLogger({
+        logDirectory: __dirname + '../../logs',
         fileNamePattern:'acces-<DATE>.log',
         dateFormat:'YYYY-MM-DD',
         //level: 'info',
         level: 'warn',
     });
-};
+
+function logWithFile(log) {console.log(log), Logger.info(log)};// define the logger in a function.
 async function getRegistrationPage (req, res, next){  
   try {
     if (!globals.Settings.allowMemberRegistration){
