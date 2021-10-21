@@ -154,7 +154,7 @@ function usernameSchema () {
     minLength: 2,
     maxLength: 20,
     validate: [{
-          validator: function (username) { return isUnique(this, username) },
+          validator: function (username) { return isUnique(this, username) }
         }
       ]
   };

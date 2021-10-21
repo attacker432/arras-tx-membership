@@ -81,6 +81,10 @@ module.exports = {
     
     AllRoles: [],
     AllUsers: [],
+    AllTanks: [],
+    AllMaps: [],
+    AllSettings: []
+  
     // Returns a role object given a role name.
     // Key = Role Name, Value = Role
     RoleFromNameLookup: {},   

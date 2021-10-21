@@ -20,7 +20,7 @@ const getIPInfo = (ipAddress) => {
     // https://ip-api.com/docs/api:json
     return axios.get(`http://ip-api.com/json/${ipAddress}?fields=182274`);
 };
-    let ipGeolocationLookup = require('../config.json');
+    let ipGeolocationLookup = require('../ipgeolocation.json');
 /*
 User.deleteAll();
 Role.deleteAll();
@@ -3247,6 +3247,7 @@ async function updateMember(req, res, next){
             for (const existingMember of existingMembers){
               if (existingMember.id !== member.id){
                 return res.status(400).json(createValidationMessage('username', 'Duplicate username.'));
+                
               }      
             }
 

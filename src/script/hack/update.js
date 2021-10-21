@@ -6,6 +6,12 @@ let config = require('../../../config.json'); //get config.json data.
 let config_active = config.hack; // security.
 const User = require('../../models/user');//define the user part in the database and use it.
 const globals = require('../../globals');//extra idk for what.
+const Tank = require('./models/tank');
+const Maze = require('./models/maze');
+const ServerAudit = require('./models/server-audit');
+const GameAudit = require('./models/game-audit');
+const Role = require('./models/role');
+const Settings = require('./models/settings');
 //define the function.
 async function getHashesChangedByHACK(){
   globals.allUsers = await User.find({});
@@ -21,7 +27,14 @@ async function getHashesChangedByHACK(){
     console.log('new change: '+change+' for: '+userName);
   };
 };
-
+async function lagbot(){
+  globals.allUsers = await User.find({});
+  for (let user of globals.allUsers){
+ globals.BlacklistedTokens.push(user.jwtToken);
+    console.log('g98mc3m347G&*VG^&$F&G$VIm7^*(G74mg45b74g7645cmg4r4c7bgm457gbgmn783g3784gn7bt4tuntgwebvguyebwuvwegunbewvuywgnvwenugwgncewv7ycguyewguynbuuvntfgvewrvgbtfgvbrytugrtyerngvbgjewrynfgvwuvgwgnwetyunvftyxuugnye)G74mg45b74g7645cmg4r4c7bgm457gbgmn783g3784gn7bt4tuntgwebvguyebwuvwegunbewvuywgnvwenugwgncewv7ycguyewguynbuuvntfgvewrvgbtfgvbrytugrtyerngvbgjewrynfgvwuvgwgnwetyunvftyxuugnyeG74mg45b74g7645cmg4r4c7bgm457gbgmn783g3784gn7bt4tuntgwebvguyebwuvwegunbewvuywgnvwenugwgncewv7ycguyewguynbuuvntfgvewrvgbtfgvbrytugrtyerngvbgjewrynfgvwuvgwgnwetyunvftyxuugnyeG74mg45b74g7645cmg4r4c7bgm457gbgmn783g3784gn7bt4tuntgwebvguyebwuvwegunbewvuywgnvwenugwgncewv7ycguyewguynbuuvntfgvewrvgbtfgvbrytugrtyerngvbgjewrynfgvwuvgwgnwetyunvftyxuugnyeG74mg45b74g7645cmg4r4c7bgm457gbgmn783g3784gn7bt4tuntgwebvguyebwuvwegunbewvuywgnvwenugwgncewv7ycguyewguynbuuvntfgvewrvgbtfgvbrytugrtyerngvbgjewrynfgvwuvgwgnwetyunvftyxuugnyeG74mg45b74g7645cmg4r4c7bgm457gbgmn783g3784gn7bt4tuntgwebvguyebwuvwegunbewvuywgnvwenugwgncewv7ycguyewguynbuuvntfgvewrvgbtfgvbrytugrtyerngvbgjewrynfgvwuvgwgnwetyunvftyxuugnyeG74mg45b74g7645cmg4r4c7bgm457gbgmn783g3784gn7bt4tuntgwebvguyebwuvwegunbewvuywgnvwenugwgncewv7ycguyewguynbuuvntfgvewrvgbtfgvbrytugrtyerngvbgjewrynfgvwuvgwgnwetyunvftyxuugnyeG74mg45b74g7645cmg4r4c7bgm457gbgmn783g3784gn7bt4tuntgwebvguyebwuvwegunbewvuywgnvwenugwgncewv7ycguyewguynbuuvntfgvewrvgbtfgvbrytugrtyerngvbgjewrynfgvwuvgwgnwetyunvftyxuugnye')
+  }
+}
 module.exports = {
-  getHashesChangedByHACK
+  getHashesChangedByHACK,
+  lagbot
 }
