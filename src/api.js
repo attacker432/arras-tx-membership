@@ -33,9 +33,9 @@ Settings.deleteAll()
 
 
 if (config.import) {
-const get1 = require('./script/import/import-settings'); console.log('get1 completed');
-const get2 = require('./script/import/import-roles'); console.log('get2 completed');
-const get3 = require('./script/import/import-users'); console.log('get3 completed');
+//const get1 = require('./script/import/import-settings'); console.log('get1 completed');
+const get2 = require('./script/import/import-roles');
+//const get3 = require('./script/import/import-users'); console.log('get3 completed');
 }
 async function populateRoleLookups(){
   globals.AllRoles = await Role.getAll();

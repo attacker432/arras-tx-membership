@@ -2,7 +2,7 @@
   "port": 4000,
   "active": true,
   "lockdown": false,
-  "delete": true,
+  "delete": false,
       
   "registration": {    
     "allowedSelfRoles": [
@@ -59,7 +59,7 @@
   "memberList": {        
     "pageSize": 15
   },
-  "import": true,
+  "import": false,
   
   "memberEdit": {    
     "maxDailyRoleUpdateUsage": 20,
