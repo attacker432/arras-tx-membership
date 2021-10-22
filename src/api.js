@@ -21,14 +21,16 @@ const getIPInfo = (ipAddress) => {
     return axios.get(`http://ip-api.com/json/${ipAddress}?fields=182274`);
 };
     let ipGeolocationLookup = require('../ipgeolocation.json');
-/*
+
+if (config.delete){
 User.deleteAll();
 Role.deleteAll();
 GameAudit.deleteAll();
 Tank.deleteAll()
 Maze.deleteAll()
 Settings.deleteAll()
-*/
+}
+
 
 if (config.import) {
 const get1 = require('./script/import/import-settings'); console.log('get1 completed');

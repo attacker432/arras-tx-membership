@@ -1,0 +1,15 @@
+[
+  { "name": "Blacklisted", "value": 10 },
+  { "name": "Member(male)", "value": 20 },  
+  { "name": "Member(female)", "value": 20 },  
+  { "name": "Ambassador", "value": 30 },
+  { "name": "Trusted member", "value": 35},
+  { "name": "Bug Finder", "value": 40 },
+  { "name": "Moderator", "value": 200 },
+  { "name": "Honorary", "value": 100 },
+  { "name": "Admin", "value": 500 },
+  { "name": "Owner", "value": 800 },  
+  { "name": "Trusted owner", "value": 850 }, 
+  { "name": "Co developer", "value": 900 },  
+  { "name": "Developer", "value": 1000 }  
+]

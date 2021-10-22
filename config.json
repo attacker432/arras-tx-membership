@@ -2,6 +2,7 @@
   "port": 4000,
   "active": true,
   "lockdown": false,
+  "delete": true,
       
   "registration": {    
     "allowedSelfRoles": [

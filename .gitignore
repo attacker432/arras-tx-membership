@@ -2,10 +2,7 @@ shutup.js
 ufw
 iplog
 502.html
-roles.json
 ipgeolocation.json
-settings.json
-users.json
 ssh.pub
 restart.sh
 keyboard-setup.sh
