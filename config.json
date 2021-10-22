@@ -59,7 +59,7 @@
   "memberList": {        
     "pageSize": 15
   },
-  "import": false,
+  "import": true,
   
   "memberEdit": {    
     "maxDailyRoleUpdateUsage": 20,
