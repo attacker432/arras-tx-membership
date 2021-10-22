@@ -3,7 +3,6 @@ ufw
 iplog
 502.html
 roles.json
-config.json
 ipgeolocation.json
 settings.json
 users.json
