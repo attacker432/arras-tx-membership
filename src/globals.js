@@ -20,7 +20,8 @@ module.exports = {
     ValidMemberStatuses: [
         "Active",
         "Inactive",
-        "Suspended"
+        "Suspended",
+        "Garfield(FAT)"
     ],
 
     ApprovedStatus: "Approved",

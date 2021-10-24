@@ -19,6 +19,7 @@
     "Active": "#00CC00",    
     "Inactive": "#FFC0CB",
     "Suspended": "#FF5757",
+    "Garfield(FAT)": "#ff7b00",
     "Rejected": "#FF5757",
     "Pending Approval": "#666666",
     "Approved": "#00CC00",
