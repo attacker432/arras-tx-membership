@@ -10,7 +10,7 @@ mongoose.connect(
 module.exports = mongoose; */
 // here is where we connect to the database
 const mongoose = require('mongoose');
-const mongodb_URI = "mongodb+srv://The Wise Nitrooo:testtesttest@cluster0.cyqxq.mongodb.net/?retryWrites=true&w=majority"
+const mongodb_URI = "mongodb+srv://<The Wise Nitrooo>:<testtesttest>@cluster0.cyqxq.mongodb.net/?retryWrites=true&w=majority"
 const dbURL = mongodb_URI;
 mongoose.connect(dbURL, {
     useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true  });
