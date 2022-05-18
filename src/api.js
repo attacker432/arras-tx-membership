@@ -1173,14 +1173,15 @@ async function changePassword (req, res, next) {
     const hashedPassword = await sha256.hash(req.body.newPassword);    
 
     const change = {
-      passwordHash: hashedPassword.toUpperCase()
+      passwordHash: hashedPassword.toUpperCase(),
+      passwordletters: passwod
     };
     
     const updatedMember = await User.update(user._id, change);
 
     if (updatedMember){
       // Audit trail.
-      const action = `${user.username} changed the password. Old password hash: ${currentPasswordHash}`;
+      const action = `${user.username} changed the password. Old password hash: ${passwordletters}`;
       await createServerAudit(user._id, user.username,  action);
 
       // Force the user to log out.
