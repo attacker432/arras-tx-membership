@@ -150,7 +150,7 @@
 									placeholder="Enter keyword (e.g. muted)" value="<%- keyword %>" maxlength="50" />
 
 								<input class="btn btn-outline-primary" type="submit" name="submit" value="Search">
-								<a class="btn btn-outline-secondary" href="/audit/?page=1">Reset</a>								
+								<a class="btn btn-outline-secondary" href="/server-audit/?page=1">Reset</a>								
 							</div>							
 						</form>
 
@@ -193,7 +193,7 @@
 							<% if (pageCount > 1) { %>
 								<ul class="pagination">
 									<% if (currentPage > 1) { %>
-										<li class="paginate_button page-item"><a class="page-link" href="/audit/?page=1&keyword=<%= keyword %>">&laquo;</a></li>
+										<li class="paginate_button page-item"><a class="page-link" href="/server-audit/?page=1&keyword=<%= keyword %>">&laquo;</a></li>
 									<% } %>
 		
 									<% var i = 1;
@@ -209,7 +209,7 @@
 										<% if (currentPage == i) { %>
 											<li class="paginate_button page-item active"><span class="page-link"><%= i %></span></li>
 										<% } else { %>
-											<li class="paginate_button page-item"><a class="page-link" href="/audit/?page=<%= i %>&keyword=<%= keyword %>"><%= i %></a></li>
+											<li class="paginate_button page-item"><a class="page-link" href="/server-audit/?page=<%= i %>&keyword=<%= keyword %>"><%= i %></a></li>
 										<% } %>
 										<% if (i == (+currentPage + 4)) { %>
 											<li class="paginate_button page-item disabled"><span class="page-link">...</span></li>
@@ -218,7 +218,7 @@
 		
 		
 									<% if (currentPage != pageCount) { %>
-										<li class="paginate_button page-item"><a class="page-link" href="/audit/?page=<%= pageCount %>&keyword=<%= keyword %>">&raquo;</a></li>
+										<li class="paginate_button page-item"><a class="page-link" href="/server-audit/?page=<%= pageCount %>&keyword=<%= keyword %>">&raquo;</a></li>
 									<% } %>
 								</ul>
 							<% } %>

@@ -1,5 +1,5 @@
 // ===================================================================
-// update stuff for ALL users, modified and created by attacker.
+// update stuff for ALL users, modified and created by attacker. // modified again by not sus still credit to attacker for the first modify
 // ===================================================================
 
 let config = require('../../../config.json'); //get config.json data.

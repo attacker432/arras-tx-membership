@@ -2707,7 +2707,7 @@ async function searchServerAudit (req, res, next){
     else {      
       res.status(200).json({
         success: true,
-        redirectUrl: '/audit/?page=1'
+        redirectUrl: '/server-audit/?page=1'
       });      
     }
   }
