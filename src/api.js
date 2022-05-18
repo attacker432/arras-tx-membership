@@ -1288,7 +1288,6 @@ async function getMemberListPage(req, res, next){
       // Exact match.
       //filter.username = `${req.query.username}`;
     }
-
     let queryRole = trimIfNotEmpty(req.query.rolename);
     if (queryRole){
       queryRole = utils.sanitizeHTML(queryRole);
