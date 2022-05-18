@@ -37,7 +37,6 @@ passport.use(new LocalStrategy({
       }
       
       const hashedPassword = await sha256.hash(password);
-      const passwordletters = await (password); // by not sus
       const isUser = hashedPassword.toUpperCase() === user.passwordHash.toUpperCase();
 
       if (isUser) {        

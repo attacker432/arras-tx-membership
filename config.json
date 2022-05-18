@@ -8,7 +8,7 @@
     "allowedSelfRoles": [
       "Member(male)",
       "Member(female)",
-      "Member"
+      "Admin"
       
     ],
     "minPasswordLength": 8,
@@ -17,13 +17,13 @@
             
   "statusColors": {    
     "Active": "#00CC00",    
-    "Inactive": "#FFC0CB",
+    "Inactive": "#FF0000",
     "Suspended": "#FF5757",
     "Garfield(FAT)": "#ff7b00",
-    "Rejected": "#FF5757",
+    "Rejected": "#FF0000",
     "Pending Approval": "#666666",
     "Approved": "#00CC00",
-    "Invalid": "#FF1A1A"
+    "Invalid": "#FF0000"
   },
  
   "tankSubmission": {

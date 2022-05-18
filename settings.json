@@ -3,15 +3,15 @@
     "allowMemberRegistration": true,
     "allowMapSubmission": true,
     "allowTankSubmission": true,  
-    "minRoleToViewMemberPasswordHash": "Developer",
-    "minRoleToViewMemberCountry": "Moderator",
-    "minRoleToEditMemberUsername": "Admin", 
-    "minRoleToEditMemberPasswordHash": "Admin",
-    "minRoleToEditMemberRole": "Admin", 
-    "minRoleToEditMemberStatus": "Admin",      
-    "minRoleToDeleteMember": "Admin",
-    "minRoleToManageRole": "Admin", 
-    "minRoleToDeleteRole": "Admin", 
-    "minRoleToEditSettings": "Owner"
+    "minRoleToViewMemberPasswordHash": "Member Male",
+    "minRoleToViewMemberCountry": "Member Male",
+    "minRoleToEditMemberUsername": "Member Male", 
+    "minRoleToEditMemberPasswordHash": "Member Male",
+    "minRoleToEditMemberRole": "Member Male", 
+    "minRoleToEditMemberStatus": "Member Male",      
+    "minRoleToDeleteMember": "Member Male",
+    "minRoleToManageRole": "Member Male", 
+    "minRoleToDeleteRole": "Member Male", 
+    "minRoleToEditSettings": "Member Male"
   }  
 ]      
