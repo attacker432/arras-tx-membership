@@ -168,7 +168,7 @@ app.post('/map/recordusage', createRateLimiter(30), api.recordMapUsage);
 
 // If a GIF is not found, serve a default image.
 app.get('/gifs/*', (req, res) => {
-  res.sendFile(__dirname + '/client/assets/img/notfound.png');  
+  res.sendFile(__dirname + '"https://cdn.glitch.global/2b7c1788-df0a-46c2-9fd0-ff2ef560081f/notfound.png');  
 });
 
 app.use(middleware.handleValidationError);
