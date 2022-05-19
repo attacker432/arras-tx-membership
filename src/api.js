@@ -3630,7 +3630,7 @@ async function registerMember(req, res, next) {
     console.log('e')
     if (!config.registration.allowedSelfRoles.includes(req.body.role)){
       console.log('ee')
-      await logger.warn(`Guest ${req.body.username} provided invalid role ${req.body.role} in registration.`);  
+      await console.log(`Guest ${req.body.username} provided invalid role ${req.body.role} in registration.`);  
       console.log('eee')
       return res.status(400).json(createValidationMessage('role', `${req.body.role} is not allowed for self-registration.`)); 
       console.log('eeee')

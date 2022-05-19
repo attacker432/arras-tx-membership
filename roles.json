@@ -1,5 +1,6 @@
 [
   {"name": "Blacklisted", "value": 10},
+  { "name": "Member", "value": 20 },  
   { "name": "Member Male", "value": 5000 },  
   { "name": "Female Member", "value": 20 },  
   { "name": "Ambassador", "value": 30 },
