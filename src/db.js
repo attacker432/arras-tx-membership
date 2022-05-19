@@ -9,6 +9,7 @@ mongoose.connect(
 
 module.exports = mongoose; */
 // here is where we connect to the database
+/*
 const mongoose = require('mongoose');
 const mongodb_URI =
   "mongodb+srv://LB:Lionim4321@cluster0.w6jgm.mongodb.net/cluster0?retryWrites=true&w=majority"; //process.env.MONGODB_URI
@@ -22,4 +23,14 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
   console.log("we are connected!!!");
 });
-module.exports = mongoose;
+module.exports = mongoose; */
+const mongoose = require('mongoose');
+
+mongoose.connect(
+  process.env.MONGO_URI || 'mongodb+srv://administratorArrasTX:locketer4321@arrastx.d7oj2.mongodb.net/?retryWrites=true&w=majority', { 
+    useNewUrlParser: true, 
+    useCreateIndex: true 
+  }
+)
+
+module.exports = mongoose; 
