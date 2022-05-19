@@ -151,7 +151,7 @@
 						</div>
 
 						<% if (user.status === 'Inactive'){ %>								
-							<div class="callout callout-primary">
+							<div style="background-color:#1288b0"class="callout callout-primary">
 								<h5>Account activation required.</h5>
 								<p>Please request a staff member to activate your account.</p>							
 							</div>
@@ -231,7 +231,7 @@
                     <label class="col-form-label col-sm-2 text-sm-right"></label>
                     <div class="col-sm-10">
                       <% if (user.canChangePassword){ %>
-                        <a style="border-color:#16bade; text-color:#16bade" class="btn btn-outline-primary" href="/changepassword" class="btn-link">
+                        <a style="border-color:#16bade; color:#16bade" class="btn btn-outline-primary" href="/changepassword" class="btn-link">
 													<i class="fa fa-key"></i>&nbsp;Change Password
 												</a>
                       <% } %>
