@@ -31,7 +31,7 @@ module.exports = {
     MinMapNameLength: 2,
     MaxMapNameLength: 30,
     MinMapCells: 10,
-    MaxMapCells: 160,
+    MaxMapCells: 200,
     MapXGrids: 40,
     MapYGrids: 40,
     MapNameRegEx: /^[a-zA-Z0-9](\s?[a-zA-Z0-9])+$/,
