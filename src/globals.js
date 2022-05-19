@@ -11,7 +11,7 @@ module.exports = {
     MaxRoleNameLength: 30,    
     RoleNameRegEx: /^[a-zA-Z\(\)](\s?[a-zA-Z\(\)])+$/,
 
-    DefaultRoleColor: '#ffffff',
+    DefaultRoleColor: '#ff0000',
     DefaultRoleName: 'Member',
     DeveloperRole: "Developer",
     DeveloperRoleValue: 1010,
