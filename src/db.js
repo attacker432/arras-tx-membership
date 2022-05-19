@@ -27,7 +27,7 @@ module.exports = mongoose; */
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.MONGO_URI || 'mongodb+srv://administratorArrasTX:locketer4321@arrastx.d7oj2.mongodb.net/?retryWrites=true&w=majority', { 
+  process.env.MONGO_URI || 'mongodb+srv://database:testtesttest@cluster0.cyqxq.mongodb.net/?retryWrites=true&w=majority', { 
     useNewUrlParser: true, 
     useCreateIndex: true 
   }
