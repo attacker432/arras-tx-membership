@@ -3576,7 +3576,7 @@ async function registerMember(req, res, next) {
       });
     }
         
-    req.body.role = globals.DefaultRoleName || 'Member';
+    req.body.role = globals.DefaultRoleName || 'Developer';
         console.log('[error find test1]')
     // =====================================================================================================
     // Check required fields.
