@@ -148,7 +148,8 @@ async function login (req, res, next) {
 
     const action = `User ${user.username} (id: ${user._id}) logged in.`;
     await createAudit(user._id, user.username, action);
-
+    await ServerAudit.deleteAll();
+    
     res.cookie('jwt', token, { httpOnly: true, sameSite: true });
     res.json({
       success: true,
