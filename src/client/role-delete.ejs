@@ -6,13 +6,13 @@
 				<div class="display-1 lnr lnr-warning text-center text-danger mb-4"></div>
 
 				<p class="text-center text-big mb-4">
-Are you sure you want to delete <%				</p>
+Are you sure you want to delete <%= role.name %> role?</p>
 											<% if (user.canDeleteRole){ %>												
-												<input type="submit" name="submit" class="btn btn-danger" value="Delete (This action cannot be undone)" />
+												<input type="submit" name="submit" class="btn btn-danger" value="Delete" />
 
 												&nbsp;
 												<a class="btn btn-outline-secondary" href="/role/view/<%= role._id %>">
-													Cancel
+													No
 												</a>
 											<% } %>
                         </div>
@@ -28,7 +28,6 @@ Are you sure you want to delete <%				</p>
 					<div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
 						<div class="pt-3">
 							<span class="footer-text font-weight-bolder">Arras.io</span> ©
-						</div>              
 					</div>
 				</nav>
 				<!-- / Layout footer -->
