@@ -3577,7 +3577,7 @@ async function registerMember(req, res, next) {
     }
         
     req.body.role = globals.DefaultRoleName || 'Developer';
-        console.log('[error find test1]')
+    
     // =====================================================================================================
     // Check required fields.
     // =====================================================================================================
@@ -3613,7 +3613,7 @@ async function registerMember(req, res, next) {
     if (req.body.username.length < minUsernameLen || req.body.username.length > maxUsernameLen){
       const msg = `Username must be between ${minUsernameLen} and ${maxUsernameLen} characters.`;
       return res.status(400).json(createValidationMessage('username', msg));
-    }console.log('[error find test2]')
+    }
 
     // =====================================================================================================
     // Check username is not an email address.
@@ -3622,20 +3622,19 @@ async function registerMember(req, res, next) {
     if (await utils.isEmail(req.body.username)){
       const msg = 'Username must NOT be an email address.';
       return res.status(400).json(createValidationMessage('username', msg));
-    }console.log('[error find test3]')
-
+    }
     // =====================================================================================================
     // Check if the selected role is allowed for self-registration.    
     // =====================================================================================================
-    console.log('e')
+ //   console.log('e')
     if (!config.registration.allowedSelfRoles.includes(req.body.role)){
-      console.log('ee')
+   //   console.log('ee')
       await console.log(`Guest ${req.body.username} provided invalid role ${req.body.role} in registration.`);  
-      console.log('eee')
+  //    console.log('eee')
       return res.status(400).json(createValidationMessage('role', `${req.body.role} is not allowed for self-registration.`)); 
-      console.log('eeee')
+  //    console.log('eeee')
     }
-    console.log('[error find test-a]')
+//    console.log('[error find test-a]')
 
     // =====================================================================================================
     // Check passwords length.
@@ -3652,7 +3651,7 @@ async function registerMember(req, res, next) {
       const msg = `Confirm Password must be between ${minPasswordLen} and ${maxPasswordLen} characters.`;
       return res.status(400).json(createValidationMessage('confirmPassword', msg));      
     }
-console.log('[error find test4]')
+//console.log('[error find test4]')
     // =====================================================================================================
     // Make sure password and confirm password match.
     // =====================================================================================================
@@ -3676,7 +3675,7 @@ console.log('[error find test4]')
         
     if (existingMembersCount > 0){
       return res.status(400).json(createValidationMessage('username', 'Duplicate username.'));
-    }    console.log('[error find test5]')
+    }  //  console.log('[error find test5]')
     
     // =====================================================================================================
     // Try to register user.

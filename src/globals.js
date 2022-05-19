@@ -14,7 +14,7 @@ module.exports = {
     DefaultRoleColor: '#ffffff',
     DefaultRoleName: 'Member',
     DeveloperRole: "Developer",
-    DeveloperRoleValue: 1000,
+    DeveloperRoleValue: 1010,
 
     DefaultMemberStatus: "Active",
     ValidMemberStatuses: [
