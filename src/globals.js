@@ -12,11 +12,11 @@ module.exports = {
     RoleNameRegEx: /^[a-zA-Z\(\)](\s?[a-zA-Z\(\)])+$/,
 
     DefaultRoleColor: '#ffffff',
-    DefaultRoleName: 'Developer',
+    DefaultRoleName: 'Member',
     DeveloperRole: "Developer",
     DeveloperRoleValue: 1000,
 
-    DefaultMemberStatus: "Active",
+    DefaultMemberStatus: "Inactive",
     ValidMemberStatuses: [
         "Active",
         "Inactive",
