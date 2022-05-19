@@ -8,7 +8,7 @@
 				<p class="text-center text-big mb-4">
 Are you sure you want to delete <%= role.name %> role?</p>
 											<% if (user.canDeleteRole){ %>												
-												<input type="submit" name="submit" class="btn btn-danger" value="Delete" />
+												<input type="submit" name="submit" class="btn btn-danger" value="Delete (This action cannot be undone)" />
 
 												&nbsp;
 												<a class="btn btn-outline-secondary" href="/role/view/<%= role._id %>">
@@ -28,6 +28,7 @@ Are you sure you want to delete <%= role.name %> role?</p>
 					<div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
 						<div class="pt-3">
 							<span class="footer-text font-weight-bolder">Arras.io</span> ©
+						</div>              
 					</div>
 				</nav>
 				<!-- / Layout footer -->
