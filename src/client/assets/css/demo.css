@@ -17,9 +17,9 @@
   height: 30px;
   border-radius: 50%;
   -ms-flex-align: center;
-      align-items: center;
+  align-items: center;
   -ms-flex-pack: center;
-      justify-content: center;
+  justify-content: center;
 }
 
 .app-brand-logo.demo svg {
@@ -79,15 +79,14 @@
 @media (min-width: 992px) {
   .demo-navbar-messages .dropdown-menu,
   .demo-navbar-notifications .dropdown-menu {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     width: 22rem;
   }
 
   .demo-navbar-user .dropdown-menu {
-    margin-top: .25rem;
+    margin-top: 0.25rem;
   }
 }
-
 
 /* *****************************************************************************
  * Content
@@ -99,7 +98,7 @@
 }
 
 .demo-vertical-spacing-sm > * + * {
-  margin-top: .9375rem !important;
+  margin-top: 0.9375rem !important;
   margin-bottom: 0 !important;
 }
 
@@ -110,7 +109,7 @@
 
 .demo-inline-spacing > *,
 .demo-paragraph-spacing > p > * {
-  margin: 0 .375rem .9375rem 0 !important;
+  margin: 0 0.375rem 0.9375rem 0 !important;
 }
 
 .demo-paragraph-spacing > p {
@@ -131,7 +130,7 @@ html:not(.material-style) .material-style-only {
   direction: ltr !important;
 }
 
-[dir=rtl] .rtl-only {
+[dir="rtl"] .rtl-only {
   display: block !important;
 }
 
@@ -142,14 +141,14 @@ html:not(.material-style) .material-style-only {
 .layout-example-block {
   margin-top: 10px;
   padding: 10px;
-  border: 1px solid rgba(0,0,0,.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 2px;
-  background: rgba(0,0,0,.04);
+  background: rgba(0, 0, 0, 0.04);
   color: #c7254e;
 }
 .dark-style .layout-example-block {
-  border-color: rgba(255,255,255,.2);
-  background: rgba(255,255,255,.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
 }
 .layout-example-block code {
   background: none;
@@ -163,9 +162,9 @@ html:not(.material-style) .material-style-only {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: stretch;
-      align-items: stretch;
+  align-items: stretch;
   -ms-flex-pack: justify;
-      justify-content: space-between;
+  justify-content: space-between;
   height: 500px;
 }
 
@@ -199,16 +198,16 @@ html:not(.material-style) .material-style-only {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
-      flex-direction: column;
+  flex-direction: column;
   width: 74%;
 }
 .layout-example-block-2 > .layout-example-block {
   -ms-flex: 0 0 auto;
-      flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 .layout-example-block-2 .layout-example-block-content {
   -ms-flex-positive: 1;
-      flex-grow: 1;
+  flex-grow: 1;
 }
 
 .layout-example-block-1-no-sidenav .layout-example-block-content {
@@ -240,22 +239,24 @@ html:not(.material-style) .material-style-only {
 }
 
 .dark-style .layout-example-run {
-  border-color: rgba(255, 255, 255, .2);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .layout-example-block-3 .layout-example-block-inner {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
-      flex-direction: column;
+  flex-direction: column;
 }
 .layout-example-block-3 .layout-example-block-inner > .layout-example-block {
   -ms-flex: 0 0 auto;
-      flex: 0 0 auto;
+  flex: 0 0 auto;
 }
-.layout-example-block-3 .layout-example-block-inner .layout-example-block-container-fluid {
+.layout-example-block-3
+  .layout-example-block-inner
+  .layout-example-block-container-fluid {
   -ms-flex-positive: 1;
-      flex-grow: 1;
+  flex-grow: 1;
 }
 .layout-example-block-3 .layout-example-block-sidenav-horizontal {
   background: #607d8b !important;
@@ -270,6 +271,9 @@ html:not(.material-style) .material-style-only {
   background: #e6514a !important;
 }
 
-.dark-style .layout-example-block-content .layout-example-block:not(.layout-example-block-sidenav-horizontal) code {
+.dark-style
+  .layout-example-block-content
+  .layout-example-block:not(.layout-example-block-sidenav-horizontal)
+  code {
   color: #666 !important;
 }
