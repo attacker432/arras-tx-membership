@@ -1,7 +1,19 @@
 <%- include('headers.ejs'); %>
-<Style>#viewOptionText.hover {
-  color: #323232;
-}</Style>
+<style>
+#saveButton {border-color:#16bade; color:#16bade}
+#saveButton:hover {
+background-color:#16bade
+}
+
+#saveButton:active {
+  margin-top: 2px;
+  height: 38px;
+  
+  border-bottom: 0px;
+  outline: none;
+  box-shadow: none;
+}
+</Style>
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-2">
 	<div class="layout-inner">
@@ -162,7 +174,7 @@
 											<label class="switcher">
 												<input type="checkbox" id="allowMemberRegistration" class="switcher-input" <%= settings.allowMemberRegistration ? "checked" : "" %> />
 												<span class="switcher-indicator">
-													<span class="switcher-yes"></span>
+													<span id="lol"class="switcher-yes"></span>
 													<span class="switcher-no"></span>
 												</span>
 												<span class="switcher-label"></span>
@@ -437,7 +449,7 @@
 									<div class="form-group row">
                     <label class="col-form-label col-sm-3 text-sm-right"></label>
                     <div class="col-sm-9">
-											<input style="border-color:#16bade; color:#16bade" type="submit" name="submit" value="Save" class="btn btn-primary" />
+											<input id="saveButton" type="submit" name="submit" value="Save" class="btn btn-primary" />
 												&nbsp;&nbsp;
 												<a class="btn btn-outline-secondary" href="/settings/view">
 													Cancel
